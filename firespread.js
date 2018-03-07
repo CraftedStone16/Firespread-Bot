@@ -1499,3 +1499,7 @@ client.on('guildMemberRemove', member => {
   guild.channels.get(`${greetings}`).send(`${member.user} **(**${member.user.username}#${member.user.discriminator}**)** Has left the __Firespread Network Discord__! We now have gone down to **${guild.memberCount}** members in the discord!`)
   guild.channels.get(`${logs}`).send(leavelog)
 });
+
+client.on('emojiCreate', emoji => {
+ client.channels.getclient.channels.get(`${logs}`).send(`A new emoji was made: ${emoji.name}\nAnimated: ${emoji.animated}`)
+});
