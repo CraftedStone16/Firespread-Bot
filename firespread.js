@@ -6,8 +6,7 @@ const client = new Discord.Client();
 const chalk = require('chalk');
 const ms = require('ms');
 const weather = require('weather-js');
-require('./util/eventLoader')(client);
-client.login(process.env.BOT_TOKEN);
+client.login('MzczOTEzNDM0MTU4NTMwNTcx.DRhYeA.CQxVV_knyYf1h_IzlhANM3piBtA');
 const youtube = new YouTube('AIzaSyAVBjef3R01PmPfMNwwmCxZOhEU94QwLac');
 const queue = new Map();
 
@@ -25,6 +24,18 @@ const queue = new Map();
 //   ).catch(error => console.log(error.stack));
 // };
 // exports.reload = reload;
+
+var prefix = "f!"
+var botversion = '3.0.0'
+
+client.on('ready', () => {
+  console.log(chalk.bgWhite.black(`Bot version: ${botversion}`));
+  console.log(chalk.bgWhite.black(`Bot Prefix: "${prefix}"`));
+  console.log(chalk.bgWhite.black('All commands Loaded!'));
+  console.log(chalk.bgWhite.black('Your bot is now online (Firespread Bot)'));
+  client.channels.get('419040375961812992').send('Hello Firespread Members :wave:')
+  client.channels.get('419040375961812992').send('[I was turned on or I was restarted]')
+});
 
 var regToken = /[\w\d]{24}\.[\w\d]{6}\.[\w\d-_]{27}/g;
 client.on('debug', e => {
@@ -48,14 +59,13 @@ client.on('error', e => {
 //   if (msg.author.id === require('./config.json').ownerid) permlvl = 4;
 //   return permlvl;
 // };
-var prefix = "f!"
+
 var mention = '<@373913434158530571>'
 var logs = '404759831950655498' // logs
 client.on('message', message => {
     if (!message.content.startsWith(prefix)) return;
     let args = message.content.split(' ').slice(1);
     var result = args.join(' ')
-    let botversion = '3.0.0'
     let botsonly = message.guild.roles.find('name', '0')
     let botowner = message.guild.roles.find('name', 'Bot Owner - DO NOT TOUCH!');
     let ownerRole = message.guild.roles.find('name', 'FS Owners');
@@ -1440,4 +1450,45 @@ client.on('message', message => {
   if (message.content === '<@406870027514413076>') {
     message.channel.send(`My prefix is **${prefix}**`);
   }
+});
+
+// client.on('guildBanAdd', message => {
+//   client.channels.get('401508984135221248').send(`**<@${user.id}>** Was just banned from the **Firespread Network Discord!**`);
+// });
+//
+// client.on('guildBanRemove', message => {
+//   client.channels.get('401508984135221248').send(`**<@${user.id}>** Was just unbanned from the **Firespread Network Discord!**`);
+// });
+
+client.on('guildMemberAdd', member => {
+  let guild = member.guild;
+  let years = (((member.joinedAt - member.user.createdAt) / 1000 / 31556952) >> 0)
+  let months = (((member.joinedAt - member.user.createdAt) / 1000 / 2629746 % 12) >> 0)
+  let days = (((member.joinedAt - member.user.createdAt) / 1000 / 2629746 % 30) >> 0)
+  let hours = (((member.joinedAt - member.user.createdAt) / 1000 / 3600 % 24) >> 0)
+  let minutes = (((member.joinedAt - member.user.createdAt) / 1000 / 60 % 60) >> 0)
+  let seconds = (((member.joinedAt - member.user.createdAt) / 1000 % 60) >> 0)
+
+  let joinlog = new Discord.RichEmbed()
+  .setTitle(':inbox_tray: __User Joined__')
+  .setThumbnail(`${member.user.displayAvatarURL}`)
+  .addField('**User**', `${member.user}\n${member.user.tag}`, true)
+  .addField('**ID**', `${member.user.id}`, true)
+  .addField('**Joined**', `${member.joinedAt}`, true)
+  .addField('**Created**', `${years} years ${months} months ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds ago`)
+
+  guild.channels.get('413096711423131648').send(`Everyone, Please Welcome the newest member of the __Firespread Network Discord__ ~~ ${member.user}! We now have a total of **${guild.memberCount}** members in the discord!`)
+  guild.channels.get('415280410495287316').send(`${prefix}new ${member.user}`);
+  member.user.send(`Hello ${member.user.username}, Thank you for being part of the Firespread Team! :heart:\n\nIf you do not mind, we would like to ask you a couple favors.\nFirst thing is that we would really appreciate it if you would read our <#392050292574781440> and when you have finished reading our rules we would like for you to check out the <#392050457230573571> and make sure that your question is or isnt there, if its not there then you can request support in <#392044096279281674> besure to tell them what your having your issue on!\n\nIf you have managed to read all of this then you are very wonderful. :heart:`)
+  guild.channels.get('404759831950655498').send(joinlog)
+});
+
+client.on('guildMemberRemove', member => {
+  let guild = member.guild;
+
+  let leavelog = new Discord.RichEmbed()
+  .addField(':outbox_tray: __**User left**__', `${member.user} | ${member.user.tag}`)
+
+  guild.channels.get('413096711423131648').send(`${member.user} **(**${member.user.username}#${member.user.discriminator}**)** Has left the __Firespread Network Discord__! We now have gone down to **${guild.memberCount}** members in the discord!`)
+  guild.channels.get('404759831950655498').send(leavelog)
 });
