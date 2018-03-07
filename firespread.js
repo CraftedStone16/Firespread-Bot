@@ -7,6 +7,7 @@ const chalk = require('chalk');
 const ms = require('ms');
 const weather = require('weather-js');
 require('./util/eventLoader')(client);
+client.login(process.env.BOT_TOKEN);
 const youtube = new YouTube('AIzaSyAVBjef3R01PmPfMNwwmCxZOhEU94QwLac');
 const queue = new Map();
 
@@ -1440,5 +1441,3 @@ client.on('message', message => {
     message.channel.send(`My prefix is **${prefix}**`);
   }
 });
-
-client.login(process.env.BOT_TOKEN);
