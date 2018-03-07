@@ -1503,3 +1503,11 @@ client.on('guildMemberRemove', member => {
 client.on('emojiCreate', emoji => {
  client.channels.get(`${logs}`).send(`A new emoji was made: ${emoji.name}\nAnimated: ${emoji.animated}`)
 });
+
+client.on('emojiDelete', emoji => {
+ client.channels.get(`${logs}`).send(`An emoji was deleted: **${emoji.name}**`)
+});
+
+client.on('emojiUpdate', (oldEmoji, newEmoji) => {
+ client.channels.get(`${logs}`).send(`An Emoji\'s name was updated:\n**Old Name**: ${oldEmoji.name}\n**New Name**: ${newEmoji.name}`)
+});
