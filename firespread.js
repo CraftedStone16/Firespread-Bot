@@ -27,6 +27,9 @@ const queue = new Map();
 
 var prefix = "f!"
 var botversion = '3.0.0'
+var rs1 = '413096711423131648' // WierdBot Discord  Channel: greets
+var gp = '413096711423131648' // greetings-punishments
+var bc = '419040706955444224' // Bot-Commands channel
 
 client.on('ready', () => {
   console.log(chalk.bgWhite.black(`Bot version: ${botversion}`));
@@ -75,9 +78,6 @@ client.on('message', message => {
     let fskRole = message.guild.roles.find('name', 'FS Kick');
     let fsmRole = message.guild.roles.find('name', 'FS Mute');
     let fsbRole = message.guild.roles.find('name', 'FS Ban');
-    let rs1 = '413096711423131648' // WierdBot Discord  Channel: greets
-    let gp = '413096711423131648' // greetings-punishments
-    let bc = '419040706955444224' // Bot-Commands channel
 
     if (message.content.startsWith(prefix +'help help')) {
       message.channel.send(`\`\`\`Displays the commands list\n\nUsage: ${prefix}help     Alias; ${prefix}h\`\`\``)
