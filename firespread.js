@@ -1540,3 +1540,18 @@ client.on('roleUpdate', (oldRole, newRole) => {
   client.channels.get(`${logs}`).send(`__**Role Updated:**__\n•-• Before;\nName: ${oldRole.name}\nColor: ${oldRole.hexColor}\nMentionable: ${oldRole.mentionable}\n-Permissions:\n${oldRole.permissions}`)
   client.channels.get(`${logs}`).send(`•-• After;\nName: ${newRole.name}\nColor: ${newRole.hexColor}\nMentionable: ${newRole.mentionable}\n-Permissions:\n${newRole.permissions}`)
 });
+
+// Voice Channl Events
+client.on('voiceStateUpdate', (oldMember, newMember) => {
+  let newUserChannel = newMember.voiceChannel
+  let oldUserChannel = oldMember.voiceChannel
+
+
+  if(oldUserChannel === undefined && newUserChannel !== undefined) {
+     client.channels.get(`${logs}`).send(`${newUserChannel.user.name} joined a Voice Channel -=- ${newUserChannel.name}`)
+    // User Joins a voice channel
+  } else if(newUserChannel === undefined){
+    client.channels.get(`${logs}`).send(`${newUserChannel.user.name} left a Voice Channel -=- ${oldUserChannel.name}`)
+    // User leaves a voice channel
+  }
+});
