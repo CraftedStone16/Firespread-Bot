@@ -1500,7 +1500,7 @@ client.on('guildMemberRemove', member => {
   guild.channels.get(`${logs}`).send(leavelog)
 });
 
-// Emoji Changes
+// Emoji Events
 client.on('emojiCreate', emoji => {
  client.channels.get(`${logs}`).send(`A new emoji was made: ${emoji.name}\nAnimated: ${emoji.animated}`)
 });
@@ -1513,7 +1513,7 @@ client.on('emojiUpdate', (oldEmoji, newEmoji) => {
  client.channels.get(`${logs}`).send(`An Emoji\'s name was updated:\n**Old Name**: ${oldEmoji.name}\n**New Name**: ${newEmoji.name}`)
 });
 
-// Channel Changes 
+// Channel Events
 client.on('channelCreate', channel => {
   client.channels.get(`${logs}`).send(`__**Channel Created:**__\n• Name: ${channel.name}\n• ID: ${channel.id}\n• Channel Type: ${channel.type}`)
 });
@@ -1524,4 +1524,19 @@ client.on('channelDelete', channel => {
 
 client.on('channelUpdate', (oldChannel, newChannel) => {
   client.channels.get(`${logs}`).send(`__**Channel Updated:**__\n• Old Name: ${oldChannel.name}\n• New Name: ${newChannel.name}`)
+});
+
+// Role Events
+client.on('roleCreate', role => {
+  client.channels.get(`${logs}`).send(`__**Role Created:**__\n• Name: ${role.name}\n• ID: ${role.id}\n• Color: ${role.hexColor}\n• Mentionable: ${role.mentionable}\n• Calc Postion: ${role.calculatedPosition}\n• Position: ${role.position}`)
+  client.channels.get(`${logs}`).send(`__**Role Permissions**__ -- __**${role.name}**__\n\n${role.permissions}`)
+});
+
+client.on('roleDelete', role => {
+  client.channels.get(`${logs}`).send(`__**Role Deleted:**__\n• Name: ${role.name}\n• ID: ${role.id}`)
+});
+
+client.on('roleUpdate', (oldRole, newRole) => {
+  client.channels.get(`${logs}`).send(`__**Role Updated:**__\n•-• Before;\nName: ${oldRole.name}\nColor: ${oldRole.hexColor}\nMentionable: ${oldRole.mentionable}\n-Permissions:\n${oldRole.permissions}`)
+  client.channels.get(`${logs}`).send(`•-• After;\nName: ${newRole.name}\nColor: ${newRole.hexColor}\nMentionable: ${newRole.mentionable}\n-Permissions:\n${newRole.permissions}`)
 });
