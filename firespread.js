@@ -1500,6 +1500,7 @@ client.on('guildMemberRemove', member => {
   guild.channels.get(`${logs}`).send(leavelog)
 });
 
+// Emoji Changes
 client.on('emojiCreate', emoji => {
  client.channels.get(`${logs}`).send(`A new emoji was made: ${emoji.name}\nAnimated: ${emoji.animated}`)
 });
@@ -1510,4 +1511,17 @@ client.on('emojiDelete', emoji => {
 
 client.on('emojiUpdate', (oldEmoji, newEmoji) => {
  client.channels.get(`${logs}`).send(`An Emoji\'s name was updated:\n**Old Name**: ${oldEmoji.name}\n**New Name**: ${newEmoji.name}`)
+});
+
+// Channel Changes 
+client.on('channelCreate', channel => {
+  client.channels.get(`${logs}`).send(`__**Channel Created:**__\n• Name: ${channel.name}\n• ID: ${channel.id}\n• Channel Type: ${channel.type}`)
+});
+
+client.on('channelDelete', channel => {
+  client.channels.get(`${logs}`).send(`__**Channel Deleted:**__\n• Name: ${channel.name}\n• ID: ${channel.id}\n• Channel Type: ${channel.type}`)
+});
+
+client.on('channelUpdate', (oldChannel, newChannel) => {
+  client.channels.get(`${logs}`).send(`__**Channel Updated:**__\n• Old Name: ${oldChannel.name}\n• New Name: ${newChannel.name}`)
 });
