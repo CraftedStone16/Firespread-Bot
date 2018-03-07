@@ -1501,5 +1501,5 @@ client.on('guildMemberRemove', member => {
 });
 
 client.on('emojiCreate', emoji => {
- client.channels.getclient.channels.get(`${logs}`).send(`A new emoji was made: ${emoji.name}\nAnimated: ${emoji.animated}`)
+ client.channels.get(`${logs}`).send(`A new emoji was made: ${emoji.name}\nAnimated: ${emoji.animated}`)
 });
