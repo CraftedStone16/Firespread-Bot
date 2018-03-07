@@ -78,6 +78,8 @@ client.on('message', message => {
     let fskRole = message.guild.roles.find('name', 'FS Kick');
     let fsmRole = message.guild.roles.find('name', 'FS Mute');
     let fsbRole = message.guild.roles.find('name', 'FS Ban');
+    let memberRole = message.guild.roles.find('name', 'Members')
+    let mutedRole = message.guild.roles.find('name', 'Muted')
 
     if (message.content.startsWith(prefix +'help help')) {
       message.channel.send(`\`\`\`Displays the commands list\n\nUsage: ${prefix}help     Alias; ${prefix}h\`\`\``)
@@ -461,7 +463,6 @@ client.on('message', message => {
         let reason = args.slice(1).join(' ');
         let user = message.mentions.users.first();
         let muteRole = client.guilds.get(message.guild.id).roles.find('name', 'Muted');
-        let memberRole = client.guilds.get(message.guild.id).roles.find('name', 'member');
         if (reason.length < 1) return message.reply('You must provide a reason for the mute').catch(console.error);
         if (message.mentions.users < 1) return message.reply('You must mention someone to mute them.').catch(console.error);
 
@@ -500,7 +501,6 @@ client.on('message', message => {
       if(message.member.roles.has(fsmRole.id)) {
         let user = message.mentions.users.first();
         let muteRole = client.guilds.get(message.guild.id).roles.find('name', 'Muted');
-        let memberRole = client.guilds.get(message.guild.id).roles.find('name', 'member');
 
         let unmutelog = new Discord.RichEmbed()
         .setColor('GREEN')
