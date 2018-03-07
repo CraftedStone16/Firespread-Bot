@@ -1,1 +1,1 @@
-worker: node firespread.js
+worker node firespread.js
