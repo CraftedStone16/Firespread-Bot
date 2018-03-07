@@ -27,10 +27,16 @@ const queue = new Map();
 
 var prefix = "f!"
 var botversion = '3.0.0'
-var rs1 = '413096711423131648' // WierdBot Discord  Channel: greets
-var gp = '413096711423131648' // greetings-punishments
-var bc = '419040706955444224' // Bot-Commands channel
 
+// Channels
+var rs1 = '413096711423131648' // WierdBot Discord  Channel: greets
+var greetings = '413096711423131648' // greetings channel
+var punishments = '420977452534202369' // punishments channel
+var bc = '419040706955444224' // Bot-Commands channel
+var pbotlogs = '415280410495287316' // bot logs/cmds channel
+var logs = '404759831950655498' // logging channel
+
+// Bot Code 
 client.on('ready', () => {
   console.log(chalk.bgWhite.black(`Bot version: ${botversion}`));
   console.log(chalk.bgWhite.black(`Bot Prefix: "${prefix}"`));
@@ -64,7 +70,6 @@ client.on('error', e => {
 // };
 
 var mention = '<@373913434158530571>'
-var logs = '404759831950655498' // logs
 client.on('message', message => {
     if (!message.content.startsWith(prefix)) return;
     let args = message.content.split(' ').slice(1);
@@ -449,7 +454,7 @@ client.on('message', message => {
         .addField('User:', `${user.tag}`)
         .addField('Moderator:', `${message.author.username}#${message.author.discriminator}`)
         .addField('Reason:', `${reason}`)
-        client.channels.get(`${rs1}`).send(embedwarn)
+        client.channels.get(`${punishments}`).send(embedwarn)
         message.channel.send('That user has successfully been warned! :ok_hand:')
         client.channels.get(`${logs}`).send(warnlog)
       } else {
@@ -484,7 +489,7 @@ client.on('message', message => {
         if (message.guild.member(user).roles.has(memberRole.id)) {
           message.guild.member(user).removeRole(memberRole.id)
           message.guild.member(user).addRole(muteRole.id).then(() => {
-            client.channels.get(`${rs1}`).send(embedmute)
+            client.channels.get(`${punishments}`).send(embedmute)
             message.channel.send('That user has successfully been muted! :ok_hand:')
           client.channels.get(`${logs}`).send(mutelog)
           });
@@ -519,7 +524,7 @@ client.on('message', message => {
         if (message.guild.member(user).roles.has(muteRole.id)) {
           message.guild.member(user).addRole(memberRole.id)
           message.guild.member(user).removeRole(muteRole.id).then(() => {
-            client.channels.get(`${rs1}`).send(embedunmute)
+            client.channels.get(`${punishments}`).send(embedunmute)
             message.channel.send('That user has successfully been unmuted! :ok_hand:')
           client.channels.get(`${logs}`).send(unmutelog)
           });
@@ -554,7 +559,7 @@ client.on('message', message => {
         .addField('User:', `${user.tag}`)
         .addField('Moderator:', `${message.author.username}#${message.author.discriminator}`)
         .addField('Reason:', `${reason}`)
-        client.channels.get(`${rs1}`).send(embedkick)
+        client.channels.get(`${punishments}`).send(embedkick)
         client.channels.get(`${logs}`).send(kicklog)
       } else {
         message.channel.send('You do not have the permission to use that command!')
@@ -585,7 +590,7 @@ client.on('message', message => {
         .addField('Moderator:', `${message.author.username}#${message.author.discriminator}`)
         .addField('Reason:', `${reason}`)
         .addField('\u200b', `User ID: ${user.id}`)
-        client.channels.get(`${rs1}`).send(embedban)
+        client.channels.get(`${punishments}`).send(embedban)
         client.channels.get(`${logs}`).send(banlog)
       } else {
         message.channel.send('You do not have the permission to use that command!')
@@ -610,7 +615,7 @@ client.on('message', message => {
         .addField('Action:', 'Un-Ban')
         .addField('User:', `<@${user}>`)
         .addField('Moderator:', `${message.author.username}#${message.author.discriminator}`)
-        client.channels.get(`${rs1}`).send(embedunban)
+        client.channels.get(`${punishments}`).send(embedunban)
         client.channels.get(`${logs}`).send(unbanlog)
       } else {
         message.channel.send('You do not have the permission to use that command!')
@@ -1452,13 +1457,13 @@ client.on('message', message => {
   }
 });
 
-// client.on('guildBanAdd', message => {
-//   client.channels.get('401508984135221248').send(`**<@${user.id}>** Was just banned from the **Firespread Network Discord!**`);
-// });
-//
-// client.on('guildBanRemove', message => {
-//   client.channels.get('401508984135221248').send(`**<@${user.id}>** Was just unbanned from the **Firespread Network Discord!**`);
-// });
+client.on('guildBanAdd', member => {
+  client.channels.get(`${greetings}`).send(`**${member.user}** Was just banned from the **Firespread Network Discord!**`);
+});
+
+client.on('guildBanRemove', member => {
+  client.channels.get(`${greetings}`).send(`**${member.user}** Was just unbanned from the **Firespread Network Discord!**`);
+});
 
 client.on('guildMemberAdd', member => {
   let guild = member.guild;
@@ -1477,10 +1482,10 @@ client.on('guildMemberAdd', member => {
   .addField('**Joined**', `${member.joinedAt}`, true)
   .addField('**Created**', `${years} years ${months} months ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds ago`)
 
-  guild.channels.get('413096711423131648').send(`Everyone, Please Welcome the newest member of the __Firespread Network Discord__ ~~ ${member.user}! We now have a total of **${guild.memberCount}** members in the discord!`)
-  guild.channels.get('415280410495287316').send(`${prefix}new ${member.user}`);
+  guild.channels.get(`${greetings}`).send(`Everyone, Please Welcome the newest member of the __Firespread Network Discord__ ~~ ${member.user}! We now have a total of **${guild.memberCount}** members in the discord!`)
+  guild.channels.get(`${pbotlogs}`).send(`${prefix}new ${member.user}`);
   member.user.send(`Hello ${member.user.username}, Thank you for being part of the Firespread Team! :heart:\n\nIf you do not mind, we would like to ask you a couple favors.\nFirst thing is that we would really appreciate it if you would read our <#392050292574781440> and when you have finished reading our rules we would like for you to check out the <#392050457230573571> and make sure that your question is or isnt there, if its not there then you can request support in <#392044096279281674> besure to tell them what your having your issue on!\n\nIf you have managed to read all of this then you are very wonderful. :heart:`)
-  guild.channels.get('404759831950655498').send(joinlog)
+  guild.channels.get(`${logs}`).send(joinlog)
 });
 
 client.on('guildMemberRemove', member => {
@@ -1489,6 +1494,6 @@ client.on('guildMemberRemove', member => {
   let leavelog = new Discord.RichEmbed()
   .addField(':outbox_tray: __**User left**__', `${member.user} | ${member.user.tag}`)
 
-  guild.channels.get('413096711423131648').send(`${member.user} **(**${member.user.username}#${member.user.discriminator}**)** Has left the __Firespread Network Discord__! We now have gone down to **${guild.memberCount}** members in the discord!`)
-  guild.channels.get('404759831950655498').send(leavelog)
+  guild.channels.get(`${greetings}`).send(`${member.user} **(**${member.user.username}#${member.user.discriminator}**)** Has left the __Firespread Network Discord__! We now have gone down to **${guild.memberCount}** members in the discord!`)
+  guild.channels.get(`${logs}`).send(leavelog)
 });
