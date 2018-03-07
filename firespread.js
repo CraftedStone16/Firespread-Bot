@@ -1458,11 +1458,13 @@ client.on('message', message => {
 });
 
 client.on('guildBanAdd', member => {
-  client.channels.get(`${greetings}`).send(`**${member.user}** Was just banned from the **Firespread Network Discord!**`);
+  let guild = member.guild;
+  guild.channels.get(`${greetings}`).send(`**${member.user}** Was just banned from the **Firespread Network Discord!**`);
 });
 
 client.on('guildBanRemove', member => {
-  client.channels.get(`${greetings}`).send(`**${member.user}** Was just unbanned from the **Firespread Network Discord!**`);
+  let guild = member.guild;
+  guild.channels.get(`${greetings}`).send(`**${member.user}** Was just unbanned from the **Firespread Network Discord!**`);
 });
 
 client.on('guildMemberAdd', member => {
