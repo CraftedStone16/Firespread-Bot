@@ -1220,7 +1220,7 @@ client.on('message', async message => {
   let serverQueue = queue.get(message.guild.id);
 
   if (message.content.startsWith(prefix + 'play')) {
-    message.delete(15000);
+    message.delete(10000);
     client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`play\` command in <#${message.channel.id}>!`)
     const voiceChannel = message.member.voiceChannel;
     if (!voiceChannel) return client.channels.get(`${bc}`).send('You must be in a voice channel first!');
@@ -1284,6 +1284,10 @@ client.on('message', async message => {
       client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`np\` command in <#${message.channel.id}>!`)
       if (!serverQueue) return client.channels.get(`${bc}`).send('There is nothing playing!');
       return message.channel.send(`Now Playing: **${serverQueue[0].title}**`);
+  } else if (message.content.startsWith(prefix + 'nowplaying')) {
+      client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`np\` command in <#${message.channel.id}>!`)
+      if (!serverQueue) return client.channels.get(`${bc}`).send('There is nothing playing!');
+      return message.channel.send(`Now Playing: **${serverQueue[0].title}**`);
   } else if (message.content.startsWith(prefix + 'volume')) {
       client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`volume\` command in <#${message.channel.id}>!`)
       if (!serverQueue) return client.channels.get(`${bc}`).send('There is nothing playing!');
@@ -1301,16 +1305,16 @@ client.on('message', async message => {
 //       return message.channel.send(songqueue)
       return message.channel.send(`
 __**Song Queue**__
-**-** ${serverQueue.songs[1].title}
-**-** ${serverQueue.songs[2].title}
-**-** ${serverQueue.songs[3].title}
-**-** ${serverQueue.songs[4].title}
-**-** ${serverQueue.songs[5].title}
-**-** ${serverQueue.songs[6].title}
-**-** ${serverQueue.songs[7].title}
-**-** ${serverQueue.songs[8].title}
-**-** ${serverQueue.songs[9].title}
-**-** ${serverQueue.songs[10].title}
+**1** ${serverQueue.songs[1].title === undefined ? "There is no music in the queue, do \`f!play\` to add music" : serverQueue.songs[1].title}
+**2** ${serverQueue.songs[2].title === undefined ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[2].title}
+**3** ${serverQueue.songs[3].title === undefined ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[3].title}
+**4** ${serverQueue.songs[4].title === undefined ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[4].title}
+**5** ${serverQueue.songs[5].title === undefined ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[5].title}
+**6** ${serverQueue.songs[6].title === undefined ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[6].title}
+**7** ${serverQueue.songs[7].title === undefined ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[7].title}
+**8** ${serverQueue.songs[8].title === undefined ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[8].title}
+**9** ${serverQueue.songs[9].title === undefined ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[9].title}
+**10** ${serverQueue.songs[10].title === undefined ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[10].title}
 
 **Now Playing:** ${serverQueue.songs[0].title}
       `);
