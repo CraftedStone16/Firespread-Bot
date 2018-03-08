@@ -42,8 +42,9 @@ client.on('ready', () => {
   console.log(chalk.bgWhite.black(`Bot Prefix: "${prefix}"`));
   console.log(chalk.bgWhite.black('All commands Loaded!'));
   console.log(chalk.bgWhite.black('Your bot is now online (Firespread Bot)'));
-  client.channels.get('419040375961812992').send('Hello Firespread Members :wave:')
-  client.channels.get('419040375961812992').send('[I was turned on or I was restarted]')
+  client.channels.get('421362442191241236').send('Im here after restarting');
+//   client.channels.get('419040375961812992').send('Hello Firespread Members :wave:')
+//   client.channels.get('419040375961812992').send('[I was turned on or I was restarted]')
 });
 
 var regToken = /[\w\d]{24}\.[\w\d]{6}\.[\w\d-_]{27}/g;
