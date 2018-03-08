@@ -1530,7 +1530,7 @@ client.on('channelUpdate', (oldChannel, newChannel) => {
 // Role Events
 client.on('roleCreate', role => {
   client.channels.get(`${logs}`).send(`__**Role Created:**__\n• Name: ${role.name}\n• ID: ${role.id}\n• Color: ${role.hexColor}\n• Mentionable: ${role.mentionable}\n• Postion: ${role.calculatedPosition}`)
-  client.channels.get(`${logs}`).send(`__**Role Permissions**__ -- __**${role.name}**__\n\n${role.permissions}`)
+  client.channels.get(`${logs}`).send(`__**Role Permissions**__ -- __**${role.name}**__\n\n${role.permissions.flags}`)
 });
 
 client.on('roleDelete', role => {
