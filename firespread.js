@@ -1301,7 +1301,7 @@ client.on('message', async message => {
 //       return message.channel.send(songqueue)
       return message.channel.send(`
 __**Song Queue**__
-${serverQueue.songs.map(song => `**-** ${song.title}`).join('\n')}
+${serverQueue.songs[1-10].map(song => `**-** ${song.title}`).join('\n')}
 
 **Now Playing:** ${serverQueue.songs[0].title}
       `);
