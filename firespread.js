@@ -1301,7 +1301,16 @@ client.on('message', async message => {
 //       return message.channel.send(songqueue)
       return message.channel.send(`
 __**Song Queue**__
-${serverQueue.songs[1-10].map(song => `**-** ${song.title}`).join('\n')}
+**-** ${serverQueue.songs[1].title}
+**-** ${serverQueue.songs[2].title}
+**-** ${serverQueue.songs[3].title}
+**-** ${serverQueue.songs[4].title}
+**-** ${serverQueue.songs[5].title}
+**-** ${serverQueue.songs[6].title}
+**-** ${serverQueue.songs[7].title}
+**-** ${serverQueue.songs[8].title}
+**-** ${serverQueue.songs[9].title}
+**-** ${serverQueue.songs[10].title}
 
 **Now Playing:** ${serverQueue.songs[0].title}
       `);
@@ -1318,6 +1327,7 @@ ${serverQueue.songs[1-10].map(song => `**-** ${song.title}`).join('\n')}
       //   .addField('You joined at', `${message.member.joinedAt}\n`)
       //   .addField('Total Members', `${message.guild.memberCount}\n`)
       //   return message.channel.send(serverembed)
+      // ${serverQueue.songs[1-10].map(song => `**-** ${song.title}`).join('\n')}
       // } else
   } else if (message.content.startsWith(prefix + 'pause')) {
       client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`pause\` command in <#${message.channel.id}>!`)
