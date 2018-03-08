@@ -1545,18 +1545,16 @@ client.on('roleUpdate', (oldRole, newRole) => {
 // Voice Channl Events
 client.on('voiceStateUpdate', (oldMember, newMember) => {
   let newUserChannel = newMember.voiceChannel
-  let oldUserChannel = oldMember.voiceChannel
-
-
-  if (oldUserChannel === undefined && newUserChannel !== undefined) {
+  let oldUserChannel = oldMember.voiceChannel\
+  
+  if(oldUserChannel === undefined && newUserChannel !== undefined) {
      client.channels.get(`${logs}`).send(`${newMember.user} joined a Voice Channel -=- ${newUserChannel.name}`)
-     // User Joins a voice channel
-  } else if (newUserChannel === undefined) {
+      // User Joins a voice channel
+  } else if(newUserChannel === undefined) {
      client.channels.get(`${logs}`).send(`${newMember.user} left a Voice Channel -=- ${oldUserChannel.name}`)
-     // User leaves a voice channel
+        // User leaves a voice channel
+  } else if(oldUserChannel !== newUserChannel) {
+     client.channels.get(`${logs}`).send(`${newMember.user} joined a different Voice Channel -=- From ${oldUserChannel.name} to ${newUserChannel.name}`)
+          // User changes voice channels
   }
-//   if (newUserChannel !== oldUserChannel) {
-//      client.channels.get(`${logs}`).send(`${newMember.user} joined a different Voice Channel -=- From ${oldUserChannel.name} to ${newUserChannel.name}`)
-//      User changes voice channels
-//   }
 });
