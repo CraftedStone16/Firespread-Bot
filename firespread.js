@@ -1545,7 +1545,7 @@ client.on('roleUpdate', (oldRole, newRole) => {
 // Voice Channl Events
 client.on('voiceStateUpdate', (oldMember, newMember) => {
   let newUserChannel = newMember.voiceChannel
-  let oldUserChannel = oldMember.voiceChannel\
+  let oldUserChannel = oldMember.voiceChannel
   
   if(oldUserChannel === undefined && newUserChannel !== undefined) {
      client.channels.get(`${logs}`).send(`${newMember.user} joined a Voice Channel -=- ${newUserChannel.name}`)
