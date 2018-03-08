@@ -1305,16 +1305,16 @@ client.on('message', async message => {
 //       return message.channel.send(songqueue)
       return message.channel.send(`
 __**Song Queue**__
-**1** ${serverQueue.songs[1].title === undefined ? "There is no music in the queue, do \`f!play\` to add music" : serverQueue.songs[1].title}
-**2** ${serverQueue.songs[2].title === undefined ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[2].title}
-**3** ${serverQueue.songs[3].title === undefined ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[3].title}
-**4** ${serverQueue.songs[4].title === undefined ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[4].title}
-**5** ${serverQueue.songs[5].title === undefined ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[5].title}
-**6** ${serverQueue.songs[6].title === undefined ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[6].title}
-**7** ${serverQueue.songs[7].title === undefined ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[7].title}
-**8** ${serverQueue.songs[8].title === undefined ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[8].title}
-**9** ${serverQueue.songs[9].title === undefined ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[9].title}
-**10** ${serverQueue.songs[10].title === undefined ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[10].title}
+**1** ${serverQueue.songs[1].title === null ? "There is no music in the queue, do \`f!play\` to add music" : serverQueue.songs[1].title}
+**2** ${serverQueue.songs[2].title === null ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[2].title}
+**3** ${serverQueue.songs[3].title === null ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[3].title}
+**4** ${serverQueue.songs[4].title === null ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[4].title}
+**5** ${serverQueue.songs[5].title === null ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[5].title}
+**6** ${serverQueue.songs[6].title === null ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[6].title}
+**7** ${serverQueue.songs[7].title === null ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[7].title}
+**8** ${serverQueue.songs[8].title === null ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[8].title}
+**9** ${serverQueue.songs[9].title === null ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[9].title}
+**10** ${serverQueue.songs[10].title === null ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[10].title}
 
 **Now Playing:** ${serverQueue.songs[0].title}
       `);
