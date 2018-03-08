@@ -1529,7 +1529,7 @@ client.on('channelUpdate', (oldChannel, newChannel) => {
 
 // Role Events
 client.on('roleCreate', role => {
-  let permlist = Permissions.FLAGS = {
+  let permlist = role.Permissions.FLAGS = {
     CREATE_INSTANT_INVITE: 1 << 0,
     KICK_MEMBERS: 1 << 1,
     BAN_MEMBERS: 1 << 2,
