@@ -1537,10 +1537,10 @@ client.on('roleDelete', role => {
   client.channels.get(`${logs}`).send(`__**Role Deleted:**__\n• Name: ${role.name}\n• ID: ${role.id}`)
 });
 
-client.on('roleUpdate', (oldRole, newRole) => {
-  client.channels.get(`${logs}`).send(`__**Role Updated:**__\n•-• Before;\nName: ${oldRole.name}\nColor: ${oldRole.hexColor}\nMentionable: ${oldRole.mentionable}\n-Permissions:\n${oldRole.permissions}`)
-  client.channels.get(`${logs}`).send(`•-• After;\nName: ${newRole.name}\nColor: ${newRole.hexColor}\nMentionable: ${newRole.mentionable}\n-Permissions:\n${newRole.permissions}`)
-});
+// client.on('roleUpdate', (oldRole, newRole) => {
+//   client.channels.get(`${logs}`).send(`__**Role Updated:**__\n•-• Before;\nName: ${oldRole.name}\nColor: ${oldRole.hexColor}\nMentionable: ${oldRole.mentionable}\n-Permissions:\n${oldRole.permissions}`)
+//   client.channels.get(`${logs}`).send(`•-• After;\nName: ${newRole.name}\nColor: ${newRole.hexColor}\nMentionable: ${newRole.mentionable}\n-Permissions:\n${newRole.permissions}`)
+// });
 
 // Voice Channl Events
 client.on('voiceStateUpdate', (oldMember, newMember) => {
