@@ -974,6 +974,10 @@ client.on('message', message => {
         client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`**SECRET NAME**\` command in <#${message.channel.id}>!`)
       }
     } else
+      
+    if (message.content.startsWith(prefix + 'nitro')) {
+      message.channel.send(`<:Nitro:330491833689833492>`)
+    }
 
     if (message.content.startsWith(prefix + 'rules')) {
       message.channel.send(`
