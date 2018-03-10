@@ -1676,10 +1676,10 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 // });
 
 client.on('message', message => {
-if (cmd === '-tsay') {
-  let tsay = args.join(' ');
-  if(tsay < 1 ) return message.reply("Please provide a message!").then(message => message.delete(5000));
-  message.channel.send(`${tsay}`);
-  return;
-}
+  if (message.content === '-tsay') {
+    let tsay = args.join(' ');
+    if(tsay < 1 ) return message.reply("Please provide a message!").then(message => message.delete(5000));
+    message.channel.send(`${tsay}`);
+    return;
+  }
 });
