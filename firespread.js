@@ -1677,9 +1677,9 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 
 client.on('message', message => {
   let args = message.content.split(' ').slice(1);
+  let tsay = args.join(' ');
   if (message.content === '-tsay') {
-    let tsay = args.join(' ');
-    if(tsay < 1 ) return message.reply("Please provide a message!").then(message => message.delete(5000));
+    if (tsay < 1 ) return message.reply("Please provide a message!").then(message => message.delete(5000))
     message.channel.send(`${tsay}`);
   }
 });
