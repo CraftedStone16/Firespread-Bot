@@ -1641,7 +1641,7 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
   }
 });
 
-// Server Deafened
+// Server Deafened -
 client.on('voiceStateUpdate', (oldMember, newMember) => {
   if(oldMember.serverDeaf === false && newMember.serverDeaf === true) {
      client.channels.get(`${logs}`).send(`${newMember.user.tag} got Server Deafened!`)
