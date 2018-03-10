@@ -1677,7 +1677,7 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 
 client.on('message', message => {
   let args = message.content.split(' ').slice(1);
-  if (message.content === '-tsay') {
+  if (message.content.startsWith(prefix + 'tsay')) {
     let tsay = args.join(' ')
     if (tsay.length < 1 ) return message.reply("Please provide a message!")
     message.channel.send(`${tsay}`)
