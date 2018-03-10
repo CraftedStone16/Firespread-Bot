@@ -976,7 +976,7 @@ client.on('message', message => {
     } else
       
     if (message.content.startsWith(prefix + 'nitro')) {
-      message.channel.send('<:Nitro:330491833689833492>')
+      message.channel.send('<a:Nitro:330491833689833492>')
     }
 
     if (message.content.startsWith(prefix + 'rules')) {
