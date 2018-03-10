@@ -1657,4 +1657,7 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 });
 
 // User Events
-
+client.on('presenceUpdate', (oldMember, newMember) => {
+  if(oldMember.serverDeaf === false && newMember.serverDeaf === true) {
+     client.channels.get(`${logs}`).send(`__**Discriminator Changed**__\nUser: ${newMember.user.tag}\nBefore: ${oldMember.user.discriminator}\nAfter: ${newMember.user.discriminator}`)
+});
