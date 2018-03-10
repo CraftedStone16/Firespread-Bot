@@ -1578,7 +1578,7 @@ client.on('roleCreate', role => {
   };
   
   client.channels.get(`${logs}`).send(`__**Role Created:**__\n• Name: ${role.name}\n• ID: ${role.id}\n• Color: ${role.hexColor}\n• Mentionable: ${role.mentionable}\n• Postion: ${role.calculatedPosition}`)
-  client.channels.get(`${logs}`).send(`__**Role Permissions**__ -- __**${role.name}**__\n\n${role.serialize(permlist)}`)
+//   client.channels.get(`${logs}`).send(`__**Role Permissions**__ -- __**${role.name}**__\n\n${role.serialize(permlist)}`)
 });
 
 client.on('roleDelete', role => {
@@ -1604,5 +1604,16 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
   } else if(oldUserChannel !== newUserChannel) {
      client.channels.get(`${logs}`).send(`${newMember.user.tag} joined a different Voice Channel -=- From ${oldUserChannel.name} to ${newUserChannel.name}`)
           // User changes voice channels
+  }
+});
+
+client.on('voiceStateUpdate', (oldMember, newMember) => {
+  
+  if(oldMember.selfMute === false && newMember.selfMute === true) {
+     client.channels.get(`${logs}`).send(`${newMember.user.tag} muted themselves in ${newMember.voiceChannel}`)
+      // User client side muted 
+  } else if(oldMember.selfMute === true && newMember.selfMute === false) {
+     client.channels.get(`${logs}`).send(`${newMember.user.tag} unmuted themselves in ${newMember.voiceChannel}`)
+        // User leaves a voice channel
   }
 });
