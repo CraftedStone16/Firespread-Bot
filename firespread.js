@@ -1657,21 +1657,21 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 });
 
 // User Events
-client.on('presenceUpdate', (oldMember, newMember) => {
-  client.channels.get(`${logs}`).send(`__**Discriminator Changed**__\nUser: ${newMember.user.tag}\nBefore: ${oldMember.user.discriminator}\nAfter: ${newMember.user.discriminator}`)
-});
+// client.on('presenceUpdate', (oldMember, newMember) => {
+//   client.channels.get(`${logs}`).send(`__**Discriminator Changed**__\nUser: ${newMember.user.tag}\nBefore: ${oldMember.user.discriminator}\nAfter: ${newMember.user.discriminator}`)
+// });
 
-client.on('presenceUpdate', (oldMember, newMember) => {
-  client.channels.get(`${logs}`).send(`__**Username Changed**__\nUser: ${newMember.user.tag}\nBefore: ${oldMember.user.username}\nAfter: ${newMember.user.username}`)
-});
+// client.on('presenceUpdate', (oldMember, newMember) => {
+//   client.channels.get(`${logs}`).send(`__**Username Changed**__\nUser: ${newMember.user.tag}\nBefore: ${oldMember.user.username}\nAfter: ${newMember.user.username}`)
+// });
 
-client.on('presenceUpdate', (oldMember, newMember) => {
-  if(oldMember.nickname === undefined && newMember.nickname !== undefined) {
-     client.channels.get(`${logs}`).send(`${newMember.user.tag} added a nick -=- ${newMember.nickname}`)
-  } else if(newMember.nickname !== undefined) {
-      client.channels.get(`${logs}`).send(`${newMember.user.tag} removed their nick -=- ${oldMember.nickname}`)
-  } else if(oldMember.nickname !== newMember.nickname) {
-     client.channels.get(`${logs}`).send(`${newMember.user.tag} changed their nickname from **${oldMember.nickname}** to **${newMember.nickname}**`)
-  }
-});
+// client.on('presenceUpdate', (oldMember, newMember) => {
+//   if(oldMember.nickname === undefined && newMember.nickname !== undefined) {
+//      client.channels.get(`${logs}`).send(`${newMember.user.tag} added a nick -=- ${newMember.nickname}`)
+//   } else if(newMember.nickname !== undefined) {
+//       client.channels.get(`${logs}`).send(`${newMember.user.tag} removed their nick -=- ${oldMember.nickname}`)
+//   } else if(oldMember.nickname !== newMember.nickname) {
+//      client.channels.get(`${logs}`).send(`${newMember.user.tag} changed their nickname from **${oldMember.nickname}** to **${newMember.nickname}**`)
+//   }
+// });
 
