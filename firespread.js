@@ -1667,9 +1667,9 @@ client.on('presenceUpdate', (oldMember, newMember) => {
 
 client.on('presenceUpdate', (oldMember, newMember) => {
   if(oldMember.nickname === undefined && newMember.nickname !== undefined) {
-     client.channels.get(`${logs}`).send(`${newMember.user.tag} added a nick (${newMember.nickname})`)
+     client.channels.get(`${logs}`).send(`${newMember.user.tag} added a nick -=- ${newMember.nickname}`)
   } else if(newMember.nickname !== undefined) {
-      client.channels.get(`${logs}`).send(`${newMember.user.tag} removed their nick (${oldMember.nickname})`)
+      client.channels.get(`${logs}`).send(`${newMember.user.tag} removed their nick -=- ${oldMember.nickname}`)
   } else if(oldMember.nickname !== newMember.nickname) {
      client.channels.get(`${logs}`).send(`${newMember.user.tag} changed their nickname from **${oldMember.nickname}** to **${newMember.nickname}**`)
   }
