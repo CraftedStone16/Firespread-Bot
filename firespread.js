@@ -1679,7 +1679,7 @@ client.on('message', message => {
   let args = message.content.split(' ').slice(1);
   if (message.content === '-tsay') {
     let tsay = args.join(' ')
-    if (tsay.length < 1 ) return message.reply("Please provide a message!").then(message => message.delete(5000))
+    if (tsay.length < 1 ) return message.reply("Please provide a message!")
     message.channel.send(`${tsay}`)
   }
 });
