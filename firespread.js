@@ -1610,10 +1610,21 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 client.on('voiceStateUpdate', (oldMember, newMember) => {
   
   if(oldMember.selfMute === false && newMember.selfMute === true) {
-     client.channels.get(`${logs}`).send(`${newMember.user.tag} muted themselves in ${newMember.voiceChannel}`)
+     client.channels.get(`${logs}`).send(`${newMember.user.tag} muted themselves in ${newMember.voiceChannel.name}`)
       // User client side muted 
   } else if(oldMember.selfMute === true && newMember.selfMute === false) {
-     client.channels.get(`${logs}`).send(`${newMember.user.tag} unmuted themselves in ${newMember.voiceChannel}`)
+     client.channels.get(`${logs}`).send(`${newMember.user.tag} unmuted themselves in ${newMember.voiceChannel.name}`)
+        // User leaves a voice channel
+  }
+});
+
+client.on('voiceStateUpdate', (oldMember, newMember) => {
+  
+  if(oldMember.selfDeaf === false && newMember.selfDeaf === true) {
+     client.channels.get(`${logs}`).send(`${newMember.user.tag} deafened themselves in ${newMember.voiceChannel.name}`)
+      // User client side muted 
+  } else if(oldMember.selfDeaf === true && newMember.selfDeaf === false) {
+     client.channels.get(`${logs}`).send(`${newMember.user.tag} undeafened themselves in ${newMember.voiceChannel.name}`)
         // User leaves a voice channel
   }
 });
