@@ -1590,7 +1590,8 @@ client.on('roleDelete', role => {
 //   client.channels.get(`${logs}`).send(`•-• After;\nName: ${newRole.name}\nColor: ${newRole.hexColor}\nMentionable: ${newRole.mentionable}\n-Permissions:\n${newRole.permissions}`)
 // });
 
-// Voice Channl Events
+//   +=-=+   Voice Channel Events   +=-=+ //
+// Channel Join, Leave, Changed
 client.on('voiceStateUpdate', (oldMember, newMember) => {
   let newUserChannel = newMember.voiceChannel
   let oldUserChannel = oldMember.voiceChannel
@@ -1607,8 +1608,8 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
   }
 });
 
+// Self Muted
 client.on('voiceStateUpdate', (oldMember, newMember) => {
-  
   if(oldMember.selfMute === false && newMember.selfMute === true) {
      client.channels.get(`${logs}`).send(`${newMember.user.tag} muted themselves in ${newMember.voiceChannel.name}`)
       // User client side muted 
@@ -1618,13 +1619,35 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
   }
 });
 
+// Self Deafened
 client.on('voiceStateUpdate', (oldMember, newMember) => {
-  
   if(oldMember.selfDeaf === false && newMember.selfDeaf === true) {
      client.channels.get(`${logs}`).send(`${newMember.user.tag} deafened themselves in ${newMember.voiceChannel.name}`)
       // User client side muted 
   } else if(oldMember.selfDeaf === true && newMember.selfDeaf === false) {
      client.channels.get(`${logs}`).send(`${newMember.user.tag} undeafened themselves in ${newMember.voiceChannel.name}`)
+        // User leaves a voice channel
+  }
+});
+
+// Server Muted
+client.on('voiceStateUpdate', (oldMember, newMember) => {
+  if(oldMember.serverMute === false && newMember.serverMute === true) {
+     client.channels.get(`${logs}`).send(`${newMember.user.tag} got Server Muted!`)
+      // User client side muted 
+  } else if(oldMember.serverMute === true && newMember.serverMute === false) {
+     client.channels.get(`${logs}`).send(`${newMember.user.tag} got Server Unmuted!`)
+        // User leaves a voice channel
+  }
+});
+
+// Server Deafened
+client.on('voiceStateUpdate', (oldMember, newMember) => {
+  if(oldMember.serverDeaf === false && newMember.serverDeaf === true) {
+     client.channels.get(`${logs}`).send(`${newMember.user.tag} got Server Deafened!`)
+      // User client side muted 
+  } else if(oldMember.serverDeaf === true && newMember.serverDeaf === false) {
+     client.channels.get(`${logs}`).send(`${newMember.user.tag} got Server UnDeafened!`)
         // User leaves a voice channel
   }
 });
