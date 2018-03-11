@@ -1545,7 +1545,7 @@ client.on('channelUpdate', (oldChannel, newChannel) => {
   client.channels.get(`${logs}`).send(`__**Channel Updated:**__\n• Old Name: ${oldChannel.name}\n• New Name: ${newChannel.name}`)
 });
 
-// Role Events
+// Role Events -
 client.on('roleCreate', role => {
   let permlist = {
     CREATE_INSTANT_INVITE: 1 << 0,
