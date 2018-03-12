@@ -9,7 +9,6 @@ const ms = require('ms');
 const weather = require('weather-js');
 const superagent = require('superagent');
 const moment = require('moment');
-const mysql = require('mysql');
 client.login(process.env.BOT_TOKEN);
 const youtube = new YouTube('AIzaSyB2ezaRFUbMxFKmnYK6_F_AWwzSTBi30x4');
 const queue = new Map();
@@ -28,24 +27,6 @@ const queue = new Map();
 //   ).catch(error => console.log(error.stack));
 // };
 // exports.reload = reload;
-// process.env.MYSQL_HOST
-
-// client.connect(err => {
-//   if(err) throw err;
-//   console.log('Connected to the database!')
-// });
-
-var con = mysql.createConnection({
-  host: 'process.env.MYSQL_HOST',
-  user: 'process.env.MYSQL_USE',
-  password: 'process.env.MYSQL_PASS',
-  database: 'process.env.MYSQL_DB',
-});
-
-con.connect(err => {
-  if(err) throw err;
-  console.log('Connected to the database!')
-});
 
 var prefix = "f!"
 var botversion = '3.0.0'
