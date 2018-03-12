@@ -30,18 +30,20 @@ const queue = new Map();
 // exports.reload = reload;
 // process.env.MYSQL_HOST
 
-client.connect(err => {
-  if(err) throw err;
-  console.log('Connected to the database!')
-});
-
-// client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
-//   if (err) throw err;
-//   for (let row of res.rows) {
-//     console.log(JSON.stringify(row));
-//   }
-//   client.end();
+// client.connect(err => {
+//   if(err) throw err;
+//   console.log('Connected to the database!')
 // });
+
+client.connect();
+
+client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+  if (err) throw err;
+  for (let row of res.rows) {
+    console.log(JSON.stringify(row));
+  }
+  client.end();
+});
 
 var prefix = "f!"
 var botversion = '3.0.0'
