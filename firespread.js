@@ -9,7 +9,7 @@ const client = new Client({
 const chalk = require('chalk');
 const ms = require('ms');
 const weather = require('weather-js');
-const { Client } = require('pg');
+const pg = require('pg');
 client.login(process.env.BOT_TOKEN);
 const youtube = new YouTube(process.env.YOUTUBE_API);
 const queue = new Map();
@@ -35,9 +35,9 @@ const queue = new Map();
 //   console.log('Connected to the database!')
 // });
 
-client.connect();
+pg.connect();
 
-client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+pg.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
   if (err) throw err;
   for (let row of res.rows) {
     console.log(JSON.stringify(row));
