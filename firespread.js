@@ -27,10 +27,10 @@ const queue = new Map();
 // exports.reload = reload;
 // process.env.MYSQL_HOST
 var con = mysql.createConnection({
-  host: process.env.MYSQL_HOST,
-  user: sql9226104,
-  password: Ib4WTDuNUI,
-  database: sql9226104
+  host: "process.env.MYSQL_HOST",
+  user: "sql9226104",
+  password: "Ib4WTDuNUI",
+  database: "sql9226104"
 });
 
 con.connect(err => {
