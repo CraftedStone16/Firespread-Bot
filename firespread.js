@@ -31,7 +31,7 @@ const queue = new Map();
 // process.env.MYSQL_HOST
 
 client.connect(err => {
-  if(err)ow err;
+  if(err) throw err;
   console.log('Connected to the database!')
 });
 
