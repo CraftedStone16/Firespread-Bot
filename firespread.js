@@ -26,16 +26,11 @@ const queue = new Map();
 // };
 // exports.reload = reload;
 
-let host = (process.env.MYSQL_HOST)
-let user = (process.env.MYSQL_USER)
-let password = (process.env.MYSQL_PASS)
-let database = (process.env.MYSQL_DB)
-
 var con = mysql.createConnection({
-  host: `${host}`,
-  user: `${user}`,
-  password: `${password}`,
-  database: `${database}`
+  host: (process.env.MYSQL_HOST),
+  user: sql9226104,
+  password: Ib4WTDuNUI,
+  database: sql9226104
 });
 
 con.connect(err => {
