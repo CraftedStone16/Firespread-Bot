@@ -1,9 +1,9 @@
+const client = new Discord.Client();
 const Discord = require('discord.js');
 const { version } = require('discord.js');
 const Util = require('discord.js');
 const ytdl = require('ytdl-core');
 const YouTube = require('simple-youtube-api');
-const client = new Discord.Client();
 const chalk = require('chalk');
 const ms = require('ms');
 const weather = require('weather-js');
