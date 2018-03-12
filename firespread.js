@@ -7,7 +7,7 @@ const chalk = require('chalk');
 const ms = require('ms');
 const weather = require('weather-js');
 client.login(process.env.BOT_TOKEN);
-const youtube = new YouTube('AIzaSyAVBjef3R01PmPfMNwwmCxZOhEU94QwLac');
+const youtube = new YouTube(process.env.YOUTUBE_API);
 const queue = new Map();
 
 // var reload = (message, cmd) => {
