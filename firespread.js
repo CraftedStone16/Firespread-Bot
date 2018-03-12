@@ -1604,7 +1604,11 @@ client.on('channelUpdate', (oldChannel, newChannel) => {
   let oldChan = oldChannel.name
   let newChan = newChannel.name
   
-  client.channels.get(`${logs}`).send(`__**Channel Updated:**__\n• Old Name: ${oldChan}\n• New Name: ${newChan}\nPosition: ${newChannel.position}`)
+  let channelupdate = new Discord.RichEmbed();
+  .addfield('__Channel Updated__', `Before: ${oldChan}\nAfter: ${newChan}\n\nOld Position: ${oldChannel.position}\nNew Position: ${newChannel.position}\n\nChannel ID: ${newChannel.id}`)
+  
+  client.channels.get(`${logs}`).send(channelupdate)
+//   `__**Channel Updated:**__\n• Old Name: ${oldChan}\n• New Name: ${newChan}\nPosition: ${newChannel.position}`
 });
 
 // Role Events -
