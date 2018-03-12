@@ -3,14 +3,11 @@ const Util = require('discord.js');
 const ytdl = require('ytdl-core');
 const YouTube = require('simple-youtube-api');
 const client = new Discord.Client();
-const pgclient = new client({
-  connectionString: process.env.DATABASE_URL, 
-  ssl: true,
-});
 const chalk = require('chalk');
 const ms = require('ms');
 const weather = require('weather-js');
-const pg = require('pg');
+// const pg = require('pg');
+const mysql = require('mysql');
 client.login(process.env.BOT_TOKEN);
 const youtube = new YouTube(process.env.YOUTUBE_API);
 const queue = new Map();
@@ -36,14 +33,16 @@ const queue = new Map();
 //   console.log('Connected to the database!')
 // });
 
-pgclient.connect();
+var con = mysql.createConnection({
+  host: process.env.MYSQL_HOST,
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASS,
+  database: process.env.MYSQL_DB
+});
 
-pgclient.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
-  if (err) throw err;
-  for (let row of res.rows) {
-    console.log(JSON.stringify(row));
-  }
-  pgclient.end();
+con.connect(err => {
+  if(err) throw err;
+  console.log('Connected to the database!')
 });
 
 var prefix = "f!"
