@@ -2,7 +2,10 @@ const Discord = require('discord.js');
 const Util = require('discord.js');
 const ytdl = require('ytdl-core');
 const YouTube = require('simple-youtube-api');
-const client = new Client({connectionString: process.env.DATABASE_URL, ssl: true});
+const client = new Discord.Client({
+  connectionString: process.env.DATABASE_URL, 
+  ssl: true,
+});
 const chalk = require('chalk');
 const ms = require('ms');
 const weather = require('weather-js');
