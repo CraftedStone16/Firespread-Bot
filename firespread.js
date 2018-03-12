@@ -10,7 +10,7 @@ const weather = require('weather-js');
 const superagent = require('superagent');
 const moment = require('moment');
 client.login(process.env.BOT_TOKEN);
-const youtube = new YouTube(process.env.YOUTUBE_API);
+const youtube = new YouTube(AIzaSyB2ezaRFUbMxFKmnYK6_F_AWwzSTBi30x4);
 const queue = new Map();
 
 // var reload = (message, cmd) => {
