@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const { version } = require('discord.js');
 const Util = require('discord.js');
 const ytdl = require('ytdl-core');
 const YouTube = require('simple-youtube-api');
@@ -6,8 +7,8 @@ const client = new Discord.Client();
 const chalk = require('chalk');
 const ms = require('ms');
 const weather = require('weather-js');
-// const pg = require('pg');
-const mysql = require('mysql');
+const superagent = require('superagent');
+const moment = require('moment');
 client.login(process.env.BOT_TOKEN);
 const youtube = new YouTube(process.env.YOUTUBE_API);
 const queue = new Map();
@@ -32,18 +33,6 @@ const queue = new Map();
 //   if(err) throw err;
 //   console.log('Connected to the database!')
 // });
-
-var con = mysql.createConnection({
-  host: "sql9.freemysqlhosting.net",
-  user: "sql9226104",
-  password: "Ib4WTDuNUI",
-  database: "sql9226104",
-});
-
-con.connect(err => {
-  if(err) throw err;
-  console.log('Connected to the database!')
-});
 
 var prefix = "f!"
 var botversion = '3.0.0'
@@ -998,6 +987,75 @@ client.on('message', message => {
     if (message.content.startsWith(prefix + 'nitro')) {
       message.channel.send('<:nitro:422127897122439168>')
     }
+  
+    if (message.content.startsWith(prefix + 'dog')) {
+      let {body} = await superagent
+      .get(`https://random.dog/woof.json?filter=png,jpg,jpeg,mp4`);
+
+      let dogembed = new Discord.RichEmbed()
+      .setImage(body.url);
+      message.channel.send(dogembed)
+    } else
+
+    if (message.content.startsWith(prefix + 'cat')) {
+      let {body} = await superagent
+      .get(`https://random.cat/meow`);
+
+      let catembed = new Discord.RichEmbed()
+      .setImage(body.file);
+      message.channel.send(catembed)
+    } else
+
+    if (message.content.startsWith(prefix + 'stats')) {
+      let duration = moment.duration(client.uptime);
+      message.channel.send(`= STATISTICS =
+    • Mem Usage  :: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB
+    • Uptime     :: ${duration}
+    • Users      :: ${client.users.size.toLocaleString()}
+    • Servers    :: ${client.guilds.size.toLocaleString()}
+    • Channels   :: ${client.channels.size.toLocaleString()}
+    • Discord.js :: v${version}
+    • Node       :: ${process.version}`, {code: "asciidoc"});
+    } else
+      
+    if (message.content.startsWith(prefix + 'uptime')) {
+      let uptime = client.uptime;
+
+      let days = 0;
+      let hours = 0;
+      let minutes = 0;
+      let seconds = 0;
+      let notCompleted = true;
+
+      while (notCompleted) {
+
+          if (uptime >= 8.64e+7) {
+
+            days++;
+            uptime -= 8.64e+7;
+
+          } else if (uptime >= 3.6e+6) {
+
+            hours++;
+            uptime -= 3.6e+6;
+
+          } else if (uptime >= 60000) {
+
+            minutes++;
+            uptime -= 60000;
+
+          } else if (uptime >= 1000) {
+
+            seconds++;
+            uptime -= 1000;
+
+          }
+
+          if (uptime < 1000)  notCompleted = false;
+
+      }
+      message.channel.send(`**Uptime:\n\nDays: \`${days}\` \nHours: \`${hours}\` \nMinutes: \`${minutes}\` \nSeconds: \`${seconds}\`**`);
+    } else
 
     if (message.content.startsWith(prefix + 'rules')) {
       message.channel.send(`
