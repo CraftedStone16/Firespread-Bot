@@ -6,7 +6,7 @@ const client = new Discord.Client();
 const chalk = require('chalk');
 const ms = require('ms');
 const weather = require('weather-js');
-client.login('MzczOTEzNDM0MTU4NTMwNTcx.DRhYeA.CQxVV_knyYf1h_IzlhANM3piBtA');
+client.login(process.env.BOT_TOKEN);
 const youtube = new YouTube('AIzaSyAVBjef3R01PmPfMNwwmCxZOhEU94QwLac');
 const queue = new Map();
 
