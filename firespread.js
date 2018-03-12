@@ -1604,7 +1604,7 @@ client.on('channelUpdate', (oldChannel, newChannel) => {
   let oldChan = oldChannel.name
   let newChan = newChannel.name
   
-  client.channels.get(`${logs}`).send(`__**Channel Updated:**__\n• Old Name: ${oldChan}\n• New Name: ${newChan}`)
+  client.channels.get(`${logs}`).send(`__**Channel Updated:**__\n• Old Name: ${oldChan}\n• New Name: ${newChan}\nPosition: ${newChannel.position}`)
 });
 
 // Role Events -
