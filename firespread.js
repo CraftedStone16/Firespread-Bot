@@ -25,9 +25,9 @@ const queue = new Map();
 //   ).catch(error => console.log(error.stack));
 // };
 // exports.reload = reload;
-
+// process.env.MYSQL_HOST
 var con = mysql.createConnection({
-  host: (process.env.MYSQL_HOST),
+  host: sql9.freemysqlhosting.net,
   user: sql9226104,
   password: Ib4WTDuNUI,
   database: sql9226104
