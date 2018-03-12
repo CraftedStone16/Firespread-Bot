@@ -1592,15 +1592,21 @@ client.on('emojiUpdate', (oldEmoji, newEmoji) => {
 
 // Channel Events
 client.on('channelCreate', channel => {
+  if (channel.type ===  dm) return;
   client.channels.get(`${logs}`).send(`__**Channel Created:**__\n• Name: ${channel.name}\n• ID: ${channel.id}\n• Channel Type: ${channel.type}`)
 });
 
 client.on('channelDelete', channel => {
+  if (channel.type ===  dm) return;
   client.channels.get(`${logs}`).send(`__**Channel Deleted:**__\n• Name: ${channel.name}\n• ID: ${channel.id}\n• Channel Type: ${channel.type}`)
 });
 
 client.on('channelUpdate', (oldChannel, newChannel) => {
-  client.channels.get(`${logs}`).send(`__**Channel Updated:**__\n• Old Name: ${oldChannel.name}\n• New Name: ${newChannel.name}`)
+  if (channel.type ===  dm) return;
+  let oldChan = oldChannel.name
+  let newChan = newChannel.name
+  
+  client.channels.get(`${logs}`).send(`__**Channel Updated:**__\n• Old Name: ${oldChan}\n• New Name: ${newChan}`)
 });
 
 // Role Events -
