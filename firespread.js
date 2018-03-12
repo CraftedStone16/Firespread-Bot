@@ -2,7 +2,8 @@ const Discord = require('discord.js');
 const Util = require('discord.js');
 const ytdl = require('ytdl-core');
 const YouTube = require('simple-youtube-api');
-const client = new Discord.Client({
+const client = new Discord.Client();
+const pgclient = new client({
   connectionString: process.env.DATABASE_URL, 
   ssl: true,
 });
@@ -35,14 +36,14 @@ const queue = new Map();
 //   console.log('Connected to the database!')
 // });
 
-pg.connect();
+pgclient.connect();
 
-pg.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+pgclient.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
   if (err) throw err;
   for (let row of res.rows) {
     console.log(JSON.stringify(row));
   }
-  pg.end();
+  pgclient.end();
 });
 
 var prefix = "f!"
