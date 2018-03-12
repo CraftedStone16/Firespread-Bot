@@ -919,7 +919,7 @@ client.on('message', message => {
         var location = result[0].location
 
         let weatherembed = new Discord.RichEmbed()
-        .setDescription(`**${current.skytext}**`)
+       // .setDescription(`**${current.skytext}**`)
         .setAuthor(`Weather for ${current.observationpoint}`)
         .setThumbnail(`${current.imageUrl}`)
         .setColor('RANDOM')
