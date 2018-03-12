@@ -1604,7 +1604,7 @@ client.on('channelUpdate', (oldChannel, newChannel) => {
   let oldChan = oldChannel.name
   let newChan = newChannel.name
   
-  let channelupdate = new Discord.RichEmbed();
+  let channelupdate = new Discord.RichEmbed()
   .addfield('__Channel Updated__', `Before: ${oldChan}\nAfter: ${newChan}\n\nOld Position: ${oldChannel.position}\nNew Position: ${newChannel.position}\n\nChannel ID: ${newChannel.id}`)
   
   client.channels.get(`${logs}`).send(channelupdate)
