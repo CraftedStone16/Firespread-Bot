@@ -80,7 +80,7 @@ client.on('error', e => {
 // };
 
 var mention = '<@373913434158530571>'
-client.on('message', message => {
+client.on('message', async message => {
     if (!message.content.startsWith(prefix)) return;
     let args = message.content.split(' ').slice(1);
     var result = args.join(' ')
