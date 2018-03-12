@@ -9,7 +9,7 @@ const client = new Client({
 const chalk = require('chalk');
 const ms = require('ms');
 const weather = require('weather-js');
-const mysql = require('mysql');
+const { Client } = require('pg');
 client.login(process.env.BOT_TOKEN);
 const youtube = new YouTube(process.env.YOUTUBE_API);
 const queue = new Map();
