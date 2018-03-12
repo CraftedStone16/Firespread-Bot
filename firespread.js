@@ -1592,17 +1592,15 @@ client.on('emojiUpdate', (oldEmoji, newEmoji) => {
 
 // Channel Events
 client.on('channelCreate', channel => {
-  if (channel.type ===  dm) return;
+//   if (channel.type ===  dm) return;
   client.channels.get(`${logs}`).send(`__**Channel Created:**__\n• Name: ${channel.name}\n• ID: ${channel.id}\n• Channel Type: ${channel.type}`)
 });
 
 client.on('channelDelete', channel => {
-  if (channel.type ===  dm) return;
   client.channels.get(`${logs}`).send(`__**Channel Deleted:**__\n• Name: ${channel.name}\n• ID: ${channel.id}\n• Channel Type: ${channel.type}`)
 });
 
 client.on('channelUpdate', (oldChannel, newChannel) => {
-  if (channel.type ===  dm) return;
   let oldChan = oldChannel.name
   let newChan = newChannel.name
   
