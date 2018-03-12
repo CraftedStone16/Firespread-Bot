@@ -2,7 +2,10 @@ const Discord = require('discord.js');
 const Util = require('discord.js');
 const ytdl = require('ytdl-core');
 const YouTube = require('simple-youtube-api');
-const client = new Discord.Client();
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
+});
 const chalk = require('chalk');
 const ms = require('ms');
 const weather = require('weather-js');
@@ -26,17 +29,19 @@ const queue = new Map();
 // };
 // exports.reload = reload;
 // process.env.MYSQL_HOST
-var con = mysql.createConnection({
-  host: "process.env.MYSQL_HOST",
-  user: "sql9226104",
-  password: "Ib4WTDuNUI",
-  database: "sql9226104"
-});
 
-con.connect(err => {
-  if(err) throw err;
+client.connect(err => {
+  if(err)ow err;
   console.log('Connected to the database!')
 });
+
+// client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+//   if (err) throw err;
+//   for (let row of res.rows) {
+//     console.log(JSON.stringify(row));
+//   }
+//   client.end();
+// });
 
 var prefix = "f!"
 var botversion = '3.0.0'
