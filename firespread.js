@@ -6,6 +6,7 @@ const client = new Discord.Client();
 const chalk = require('chalk');
 const ms = require('ms');
 const weather = require('weather-js');
+const mysql = require('mysql');
 client.login(process.env.BOT_TOKEN);
 const youtube = new YouTube(process.env.YOUTUBE_API);
 const queue = new Map();
@@ -25,6 +26,18 @@ const queue = new Map();
 // };
 // exports.reload = reload;
 
+var con = mysql.createConnection({
+  host: (process.env.MYSQL_HOST),
+  user: (process.env.MYSQL_USER),
+  password: (process.env.MYSQL_PASS),
+  database: (process.env.MYSQL_DB)
+});
+
+con.connect(err => {
+  if(err) throw err;
+  console.log('Connected to the database!')
+});
+
 var prefix = "f!"
 var botversion = '3.0.0'
 
@@ -38,9 +51,9 @@ var logs = '404759831950655498' // logging channel
 
 // Bot Code 
 client.on('ready', () => {
-  console.log(chalk.bgWhite.black(`Bot version: ${botversion}`));
-  console.log(chalk.bgWhite.black(`Bot Prefix: "${prefix}"`));
-  console.log(chalk.bgWhite.black('All commands Loaded!'));
+  console.log(`Bot version: ${botversion}`);
+  console.log(`Bot Prefix: "${prefix}"`);
+  console.log('All commands Loaded!');
   console.log(chalk.bgWhite.black('Your bot is now online (Firespread Bot)'));
   client.channels.get('421362442191241236').send('Im here after restarting');
 //   client.channels.get('419040375961812992').send('Hello Firespread Members :wave:')
