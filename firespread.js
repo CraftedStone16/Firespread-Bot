@@ -34,10 +34,10 @@ const queue = new Map();
 // });
 
 var con = mysql.createConnection({
-  host: 'process.env.MYSQL_HOST',
-  user: 'process.env.MYSQL_USE',
-  password: 'process.env.MYSQL_PASS',
-  database: 'process.env.MYSQL_DB',
+  host: "sql9.freemysqlhosting.net",
+  user: "sql9226104",
+  password: "Ib4WTDuNUI",
+  database: "sql9226104",
 });
 
 con.connect(err => {
