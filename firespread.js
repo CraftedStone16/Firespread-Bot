@@ -1296,7 +1296,7 @@ client.on('message', async message => {
   let serverQueue = queue.get(message.guild.id);
 
   if (message.content.startsWith(prefix + 'play')) {
-    message.delete(10000);
+    message.delete(15000);
     client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`play\` command in <#${message.channel.id}>!`)
     const voiceChannel = message.member.voiceChannel;
     if (!voiceChannel) return client.channels.get(`${bc}`).send('You must be in a voice channel first!');
@@ -1360,10 +1360,6 @@ client.on('message', async message => {
       client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`np\` command in <#${message.channel.id}>!`)
       if (!serverQueue) return client.channels.get(`${bc}`).send('There is nothing playing!');
       return message.channel.send(`Now Playing: **${serverQueue[0].title}**`);
-  } else if (message.content.startsWith(prefix + 'nowplaying')) {
-      client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`np\` command in <#${message.channel.id}>!`)
-      if (!serverQueue) return client.channels.get(`${bc}`).send('There is nothing playing!');
-      return message.channel.send(`Now Playing: **${serverQueue[0].title}**`);
   } else if (message.content.startsWith(prefix + 'volume')) {
       client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`volume\` command in <#${message.channel.id}>!`)
       if (!serverQueue) return client.channels.get(`${bc}`).send('There is nothing playing!');
@@ -1381,16 +1377,7 @@ client.on('message', async message => {
 //       return message.channel.send(songqueue)
       return message.channel.send(`
 __**Song Queue**__
-**1** ${serverQueue.songs[1].title === null ? "There is no music in the queue, do \`f!play\` to add music" : serverQueue.songs[1].title}
-**2** ${serverQueue.songs[2].title === null ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[2].title}
-**3** ${serverQueue.songs[3].title === null ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[3].title}
-**4** ${serverQueue.songs[4].title === null ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[4].title}
-**5** ${serverQueue.songs[5].title === null ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[5].title}
-**6** ${serverQueue.songs[6].title === null ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[6].title}
-**7** ${serverQueue.songs[7].title === null ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[7].title}
-**8** ${serverQueue.songs[8].title === null ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[8].title}
-**9** ${serverQueue.songs[9].title === null ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[9].title}
-**10** ${serverQueue.songs[10].title === null ? "Do not mind this extra space (its a temp fix for now)" : serverQueue.songs[10].title}
+${serverQueue.songs.map(song => `**-** ${song.title}`).join('\n')}
 
 **Now Playing:** ${serverQueue.songs[0].title}
       `);
@@ -1407,7 +1394,6 @@ __**Song Queue**__
       //   .addField('You joined at', `${message.member.joinedAt}\n`)
       //   .addField('Total Members', `${message.guild.memberCount}\n`)
       //   return message.channel.send(serverembed)
-      // ${serverQueue.songs[1-10].map(song => `**-** ${song.title}`).join('\n')}
       // } else
   } else if (message.content.startsWith(prefix + 'pause')) {
       client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`pause\` command in <#${message.channel.id}>!`)
