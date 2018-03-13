@@ -1581,13 +1581,15 @@ client.on('guildMemberRemove', member => {
 
 // Emoji Events
 client.on('emojiCreate', emoji => {
-  
+  let emojicreate = new Discord.RichEmbed()
+  .addField('\u200b', `The emoji **${emoji.name} was created! Animated: ${emoji.animted}`)
+  client.channels.get(`${logs}`).send(emojicreate)
  // client.channels.get(`${logs}`).send(`A new emoji was made: ${emoji.name}\nAnimated: ${emoji.animated}`)
 });
 
 client.on('emojiDelete', emoji => {
   let emojidelete = new Discord.RichEmbed()
-  .addField(`The emoji **${emoji.name}** was deleted! Animated: ${emoji.animated}`)
+  .addField('\u200b', `The emoji **${emoji.name}** was deleted! Animated: ${emoji.animated}`)
   client.channels.get(`${logs}`).send(emojidelete)
  // client.channels.get(`${logs}`).send(`An emoji was deleted: **${emoji.name}**`)
 });
