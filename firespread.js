@@ -1581,24 +1581,28 @@ client.on('guildMemberRemove', member => {
 // ${member.user.presence.game === null ? "Nothing! (Literally)" :  member.user.presence.game.name}
 // Emoji Events
 client.on('emojiCreate', emoji => {
-  const caniemoji = emoji.animated ? "This Emoji is animated" : "This emoji is not animated";
+  const caniemoji = emoji.animated ? "This is an Animated Emoji" : "This is not an Animated Emoji";
   let emojicreate = new Discord.RichEmbed()
-  .addField(`-=- Emoji Event Log -=-`, `"**${emoji.name}**" was created!\nID: ${emoji.id}\nAnimated`)
-  .setAuthor(`${caniemoji}`);
+  .addField(`-=- Emoji Event Log -=-`, `"**${emoji.name}**" was created!\nID: ${emoji.id}`)
+  .setFooter(`**${caniemoji}**`)
   client.channels.get(`${logs}`).send(emojicreate)
  // client.channels.get(`${logs}`).send(`A new emoji was made: ${emoji.name}\nAnimated: ${emoji.animated}`)
 });
 
 client.on('emojiDelete', emoji => {
+  const daniemoji = emoji.animated ? "This was an Animated Emoji" : "This was not an Animated Emoji";
   let emojidelete = new Discord.RichEmbed()
-  .addField(`-=- Emoji Event Log -=-`, `"**${emoji.name}**" was deleted!\nID: ${emoji.id}\nAnimated: ${emoji.animated}`)
+  .addField(`-=- Emoji Event Log -=-`, `"**${emoji.name}**" was deleted!\nID: ${emoji.id}`)
+  .setFooter(`**${daniemoji}**`)
   client.channels.get(`${logs}`).send(emojidelete)
  // client.channels.get(`${logs}`).send(`An emoji was deleted: **${emoji.name}**`)
 });
 
 client.on('emojiUpdate', (oldEmoji, newEmoji) => {
+  const uaniemoji = emoji.animated ? "This is an Animated Emoji" : "This is not an Animated Emoji";
   let emojiupdate = new Discord.RichEmbed()
-  .addField(`-=- Emoji Event Log -=-`, `"**${oldEmoji.name}**" was renamed to "**${newEmoji.name}**"\nID: ${newEmoji.id}\nAnimated: ${newEmoji.animated}`)
+  .addField(`-=- Emoji Event Log -=-`, `"**${oldEmoji.name}**" was renamed to "**${newEmoji.name}**"\nID: ${newEmoji.name}`)
+  .setFooter(`**${uaniemoji}**`)
   client.channels.get(`${logs}`).send(emojiupdate)
  // client.channels.get(`${logs}`).send(`An Emoji\'s name was updated:\n**Old Name**: ${oldEmoji.name}\n**New Name**: ${newEmoji.name}`)
 });
