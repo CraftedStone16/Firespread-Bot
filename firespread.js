@@ -1581,9 +1581,10 @@ client.on('guildMemberRemove', member => {
 // ${member.user.presence.game === null ? "Nothing! (Literally)" :  member.user.presence.game.name}
 // Emoji Events
 client.on('emojiCreate', emoji => {
+  const caniemoji = emoji.animated ? "This Emoji is animated" : "This emoji is not animated";
   let emojicreate = new Discord.RichEmbed()
   .addField(`-=- Emoji Event Log -=-`, `"**${emoji.name}**" was created!\nID: ${emoji.id}\nAnimated`)
-  .setAuthor(`${emoji.animated === false ? "This is not an Animated Emoji!" : emoji.animated === true ? "This is an Animated Emoji"}`)
+  .setAuthor(`${caniemoji}`);
   client.channels.get(`${logs}`).send(emojicreate)
  // client.channels.get(`${logs}`).send(`A new emoji was made: ${emoji.name}\nAnimated: ${emoji.animated}`)
 });
