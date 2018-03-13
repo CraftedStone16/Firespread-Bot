@@ -1578,11 +1578,12 @@ client.on('guildMemberRemove', member => {
   guild.channels.get(`${greetings}`).send(`${member.user} **(**${member.user.username}#${member.user.discriminator}**)** Has left the __Firespread Network Discord__! We now have gone down to **${guild.memberCount}** members in the discord!`)
   guild.channels.get(`${logs}`).send(leavelog)
 });
-
+// ${member.user.presence.game === null ? "Nothing! (Literally)" :  member.user.presence.game.name}
 // Emoji Events
 client.on('emojiCreate', emoji => {
   let emojicreate = new Discord.RichEmbed()
-  .addField(`-=- Emoji Event Log -=-`, `"**${emoji.name}**" was created!\nID: ${emoji.id}\nAnimated: ${emoji.animated}\n\n${emoji.animated === false ? "This is not an Animated Emoji!" : emoji.animated === true ? "This is an Animated Emoji"}`)
+  .addField(`-=- Emoji Event Log -=-`, `"**${emoji.name}**" was created!\nID: ${emoji.id}\nAnimated`)
+  .setAuthor(`${emoji.animated === false ? "This is not an Animated Emoji!" : emoji.animated === true ? "This is an Animated Emoji"}`)
   client.channels.get(`${logs}`).send(emojicreate)
  // client.channels.get(`${logs}`).send(`A new emoji was made: ${emoji.name}\nAnimated: ${emoji.animated}`)
 });
