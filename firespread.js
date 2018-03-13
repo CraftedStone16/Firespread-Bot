@@ -1581,15 +1581,22 @@ client.on('guildMemberRemove', member => {
 
 // Emoji Events
 client.on('emojiCreate', emoji => {
- client.channels.get(`${logs}`).send(`A new emoji was made: ${emoji.name}\nAnimated: ${emoji.animated}`)
+  
+ // client.channels.get(`${logs}`).send(`A new emoji was made: ${emoji.name}\nAnimated: ${emoji.animated}`)
 });
 
 client.on('emojiDelete', emoji => {
- client.channels.get(`${logs}`).send(`An emoji was deleted: **${emoji.name}**`)
+  let emojidelete = new Discord.RichEmbed()
+  .addField(`The emoji **${emoji.name}** was deleted! Animated: ${emoji.animated}`)
+  client.channels.get(`${logs}`).send(emojidelete)
+ // client.channels.get(`${logs}`).send(`An emoji was deleted: **${emoji.name}**`)
 });
 
 client.on('emojiUpdate', (oldEmoji, newEmoji) => {
- client.channels.get(`${logs}`).send(`An Emoji\'s name was updated:\n**Old Name**: ${oldEmoji.name}\n**New Name**: ${newEmoji.name}`)
+  let emojiupdate = new Discord.RichEmbed()
+  .addField(`**An Emoji updated! (${oldEmoji.id})`, `The emoji **${oldEmoji.name}** was renamed to **${newEmoji.name}**. Animated: ${newEmoji.animated}`)
+  client.channels.get(`${logs}`).send(emojiupdate)
+ // client.channels.get(`${logs}`).send(`An Emoji\'s name was updated:\n**Old Name**: ${oldEmoji.name}\n**New Name**: ${newEmoji.name}`)
 });
 
 // Channel Events
