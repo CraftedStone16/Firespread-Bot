@@ -76,6 +76,7 @@ client.on('error', e => {
 var mention = '<@373913434158530571>'
 client.on('message', async message => {
     if (!message.content.startsWith(prefix)) return;
+    if (message.content. startsWith(prefix)) return message.channel.send('I\'m Sorry, but I am in Maintenance Mode so my commands have been disabled!')
     let args = message.content.split(' ').slice(1);
     var result = args.join(' ')
     let botsonly = message.guild.roles.find('name', '0')
@@ -1290,6 +1291,7 @@ if (message.content.startsWith(prefix + 'mute')) {
 */
 
 client.on('message', async message => {
+  if (message.content. startsWith(prefix)) return message.channel.send('I\'m Sorry, but I am in Maintenance Mode so my commands have been disabled!')
   let args = message.content.split(' ');
   let searchString = args.slice(1).join(' ');
   let url = args[1] ? args[1].replace(/<(.+)>/g, '$1') : '';
