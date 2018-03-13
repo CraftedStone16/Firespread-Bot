@@ -1255,7 +1255,7 @@ client.on('message', async message => {
                     // let arg3 = args.slice(2).join(' ');
                     message.channel.send(`First Arg: ${testargs[0]}    Second Arg: ${testargs[1]}    Third Arg: ${testargs[2]}`)
     */
-// }); ----- RE ENABLE AFTER MAINTENANCE -----
+}); //----- RE ENABLE AFTER MAINTENANCE -----
 /*
 if (message.content.startsWith(prefix + 'mute')) {
   if(message.member.roles.has(fswRole.id)) {
@@ -1290,7 +1290,7 @@ if (message.content.startsWith(prefix + 'mute')) {
 } else
 */
 
-// client.on('message', async message => { ----- RE ENABLE AFTER MAINTENANCE -----
+client.on('message', async message => { //----- RE ENABLE AFTER MAINTENANCE -----
 //  if (message.content. startsWith(prefix)) return message.channel.send('I\'m Sorry, but I am in Maintenance Mode so my commands have been disabled!')
   let args = message.content.split(' ');
   let searchString = args.slice(1).join(' ');
