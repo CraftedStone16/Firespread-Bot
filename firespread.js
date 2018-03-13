@@ -1582,7 +1582,7 @@ client.on('guildMemberRemove', member => {
 // Emoji Events
 client.on('emojiCreate', emoji => {
   let emojicreate = new Discord.RichEmbed()
-  .addField(`-=- Emoji Event Log -=-`, `"**${emoji.name}**" was created!\nID: ${emoji.id}\nAnimated: ${emoji.animated}`)
+  .addField(`-=- Emoji Event Log -=-`, `"**${emoji.name}**" was created!\nID: ${emoji.id}\nAnimated: ${emoji.animated}\n\n${emoji.animated === false ? "This is not an Animated Emoji!" : emoji.animated === true ? "This is an Animated Emoji"}`)
   client.channels.get(`${logs}`).send(emojicreate)
  // client.channels.get(`${logs}`).send(`A new emoji was made: ${emoji.name}\nAnimated: ${emoji.animated}`)
 });
