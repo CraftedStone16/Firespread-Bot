@@ -1601,7 +1601,7 @@ client.on('emojiDelete', emoji => {
 client.on('emojiUpdate', (oldEmoji, newEmoji) => {
   const uaniemoji = newEmoji.animated ? "This is an Animated Emoji" : "This is not an Animated Emoji";
   let emojiupdate = new Discord.RichEmbed()
-  .addField(`-=- Emoji Event Log -=-`, `"**${oldEmoji.name}**" was renamed to "**${newEmoji.name}**"\nID: ${newEmoji.name}`)
+  .addField(`-=- Emoji Event Log -=-`, `"**${oldEmoji.name}**" was renamed to "**${newEmoji.name}**"\nID: ${newEmoji.id}`)
   .setFooter(`${uaniemoji}`)
   client.channels.get(`${logs}`).send(emojiupdate)
  // client.channels.get(`${logs}`).send(`An Emoji\'s name was updated:\n**Old Name**: ${oldEmoji.name}\n**New Name**: ${newEmoji.name}`)
