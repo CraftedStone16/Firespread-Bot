@@ -994,7 +994,7 @@ client.on('message', async message => {
 
     if (message.content.startsWith(prefix + 'cat')) {
       let {body} = await superagent
-      .get(`https://random.cat/meow`);
+      .get(`aws.random.cat/meow`);
 
       let catembed = new Discord.RichEmbed()
       .setImage(body.file);
