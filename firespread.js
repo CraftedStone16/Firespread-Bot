@@ -1583,7 +1583,7 @@ client.on('guildMemberRemove', member => {
 client.on('emojiCreate', emoji => {
   const caniemoji = emoji.animated ? "This is an Animated Emoji" : "This is not an Animated Emoji";
   let emojicreate = new Discord.RichEmbed()
-  .addField(`-=- Emoji Event Log -=-`, `"**${emoji.name}**" was created!\nID: ${emoji.id}`)
+  .addField(`-=- Emoji Event Log -=-`, `"**${emoji.name}**" was created\nID: ${emoji.id}`)
   .setFooter(`${caniemoji}`)
   client.channels.get(`${logs}`).send(emojicreate)
  // client.channels.get(`${logs}`).send(`A new emoji was made: ${emoji.name}\nAnimated: ${emoji.animated}`)
@@ -1592,7 +1592,7 @@ client.on('emojiCreate', emoji => {
 client.on('emojiDelete', emoji => {
   const daniemoji = emoji.animated ? "This was an Animated Emoji" : "This was not an Animated Emoji";
   let emojidelete = new Discord.RichEmbed()
-  .addField(`-=- Emoji Event Log -=-`, `"**${emoji.name}**" was deleted!\nID: ${emoji.id}`)
+  .addField(`-=- Emoji Event Log -=-`, `"**${emoji.name}**" was deleted\nID: ${emoji.id}`)
   .setFooter(`${daniemoji}`)
   client.channels.get(`${logs}`).send(emojidelete)
  // client.channels.get(`${logs}`).send(`An emoji was deleted: **${emoji.name}**`)
@@ -1609,22 +1609,41 @@ client.on('emojiUpdate', (oldEmoji, newEmoji) => {
 
 // Channel Events
 client.on('channelCreate', channel => {
+  let channelcreate = new Discord.RichEmbed()
+  .addField('-=- Channel Event Log -=-', `${channel.name} was created\nID: ${channel.id}\nParent: ${channel.parent.name}`)
+  .setFooter(`This is a "${channel.type}" channel`)
+  client.channels.get(`${logs}`).send(channelcreate)
 //   if (channel.type ===  dm) return;
-  client.channels.get(`${logs}`).send(`__**Channel Created:**__\n• Name: ${channel.name}\n• ID: ${channel.id}\n• Channel Type: ${channel.type}`)
+//  client.channels.get(`${logs}`).send(`__**Channel Created:**__\n• Name: ${channel.name}\n• ID: ${channel.id}\n• Channel Type: ${channel.type}`)
 });
 
 client.on('channelDelete', channel => {
-  client.channels.get(`${logs}`).send(`__**Channel Deleted:**__\n• Name: ${channel.name}\n• ID: ${channel.id}\n• Channel Type: ${channel.type}`)
+  let channeldelete = new Discord.RichEmbed()
+  .addField('-=- Channel Event Log -=-', `${channel.name} was deleted\nID: ${channel.id}`)
+  .setFooter(`This was a "${channel.type}" channel`)
+  client.channels.get(`${logs}`).send(channeldelete)
+  // client.channels.get(`${logs}`).send(`__**Channel Deleted:**__\n• Name: ${channel.name}\n• ID: ${channel.id}\n• Channel Type: ${channel.type}`)
 });
 
 client.on('channelUpdate', (oldChannel, newChannel) => {
-  let oldChan = oldChannel.name
-  let newChan = newChannel.name
   
-  let channelupdate = new Discord.RichEmbed()
-  .addfield('__Channel Updated__', `Before: ${oldChan}\nAfter: ${newChan}\n\nOld Position: ${oldChannel.position}\nNew Position: ${newChannel.position}\n\nChannel ID: ${newChannel.id}`)
+  if(oldChannel.name !== newChannel.name) {
+     let channelnameupdate = new Discord.RichEmbed()
+     .addfield('-=- Channel Event Log -=-', `"**${oldChannel.name}**" was renamed to "**${newChannel.name}**"\nID: ${newChannel.id}`)
+     client.channels.get(`${logs}`).send(channelnameupdate)
+     // client.channels.get(`${logs}`).send(`${newMember.user.tag} joined a Voice Channel -=- ${newUserChannel.name}`)
+     // User Joins a voice channel
+  } else if(oldChannel.positon !== newChannel.postion) {
+     let channelposupdate = new Discord.RichEmbed()
+     .addfield('-=- Channel Event Log -=-', `"**${newChannel.name}**" was moved to position **${newChannel.postion}** from position ${oldChannel.positon}\nOld Parent: ${oldChannel.parent.name} |-| New Parent: ${newChannel.parent.name}\nID: ${newChannel.id}`)
+     client.channels.get(`${logs}`).send(channelposupdate)
+     // client.channels.get(`${logs}`).send(`${newMember.user.tag} left a Voice Channel -=- ${oldUserChannel.name}`)
+        // User leaves a voice channel
+  }
+//   let channelupdate = new Discord.RichEmbed()
+//   .addfield('__Channel Updated__', `Before: ${oldChan}\nAfter: ${newChan}\n\nOld Position: ${oldChannel.position}\nNew Position: ${newChannel.position}\n\nChannel ID: ${newChannel.id}`)
   
-  client.channels.get(`${logs}`).send(channelupdate)
+//   client.channels.get(`${logs}`).send(channelupdate)
 //   `__**Channel Updated:**__\n• Old Name: ${oldChan}\n• New Name: ${newChan}\nPosition: ${newChannel.position}`
 });
 
