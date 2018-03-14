@@ -1610,7 +1610,7 @@ client.on('emojiUpdate', (oldEmoji, newEmoji) => {
 // Channel Events
 client.on('channelCreate', channel => {
   let channelcreate = new Discord.RichEmbed()
-  .addField('-=- Channel Event Log -=-', `${channel.name} was created\nID: ${channel.id}\nParent: ${channel.parent.name}`)
+  .addField('-=- Channel Event Log -=-', `"${channel.name}" was created\nID: ${channel.id}\nParent: ${channel.parent.name}`)
   .setFooter(`This is a "${channel.type}" channel`)
   client.channels.get(`${logs}`).send(channelcreate)
 //   if (channel.type ===  dm) return;
@@ -1619,7 +1619,7 @@ client.on('channelCreate', channel => {
 
 client.on('channelDelete', channel => {
   let channeldelete = new Discord.RichEmbed()
-  .addField('-=- Channel Event Log -=-', `${channel.name} was deleted\nID: ${channel.id}`)
+  .addField('-=- Channel Event Log -=-', `"${channel.name}" was deleted\nID: ${channel.id}`)
   .setFooter(`This was a "${channel.type}" channel`)
   client.channels.get(`${logs}`).send(channeldelete)
   // client.channels.get(`${logs}`).send(`__**Channel Deleted:**__\n• Name: ${channel.name}\n• ID: ${channel.id}\n• Channel Type: ${channel.type}`)
@@ -1629,13 +1629,13 @@ client.on('channelUpdate', (oldChannel, newChannel) => {
   
   if(oldChannel.name !== newChannel.name) {
      let channelnameupdate = new Discord.RichEmbed()
-     .addfield('-=- Channel Event Log -=-', `"**${oldChannel.name}**" was renamed to "**${newChannel.name}**"\nID: ${newChannel.id}`)
+     .addField('-=- Channel Event Log -=-', `"**${oldChannel.name}**" was renamed to "**${newChannel.name}**"\nID: ${newChannel.id}`)
      client.channels.get(`${logs}`).send(channelnameupdate)
      // client.channels.get(`${logs}`).send(`${newMember.user.tag} joined a Voice Channel -=- ${newUserChannel.name}`)
      // User Joins a voice channel
-  } else if(oldChannel.positon !== newChannel.postion) {
+  } else if(newChannel.positon !== oldChannel.postion) {
      let channelposupdate = new Discord.RichEmbed()
-     .addfield('-=- Channel Event Log -=-', `"**${newChannel.name}**" was moved to position **${newChannel.postion}** from position ${oldChannel.positon}\nOld Parent: ${oldChannel.parent.name} |-| New Parent: ${newChannel.parent.name}\nID: ${newChannel.id}`)
+     .addField('-=- Channel Event Log -=-', `"**${newChannel.name}**" was moved to position **${newChannel.postion}** from position ${oldChannel.positon}\nOld Parent: ${oldChannel.parent.name} |-| New Parent: ${newChannel.parent.name}\nID: ${newChannel.id}`)
      client.channels.get(`${logs}`).send(channelposupdate)
      // client.channels.get(`${logs}`).send(`${newMember.user.tag} left a Voice Channel -=- ${oldUserChannel.name}`)
         // User leaves a voice channel
