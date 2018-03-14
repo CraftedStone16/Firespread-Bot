@@ -1644,7 +1644,7 @@ client.on('channelUpdate', (oldChannel, newChannel) => {
 });
 
 client.on('channelUpdate', (oldChannel, newChannel) => {
-  if(newChannel.positon !== oldChannel.postion) {
+  if(newChannel.positon !== oldChannel.position) {
      let channelposupdate = new Discord.RichEmbed()
      .addField('-=- Channel Event Log -=-', `"**${newChannel.name}**" was moved to position **${newChannel.postion}** from position ${oldChannel.positon}\nOld Parent: ${oldChannel.parent.name} |-| New Parent: ${newChannel.parent.name}\nID: ${newChannel.id}`)
      client.channels.get(`${logs}`).send(channelposupdate)
