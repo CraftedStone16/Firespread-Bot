@@ -1633,18 +1633,22 @@ client.on('channelUpdate', (oldChannel, newChannel) => {
      client.channels.get(`${logs}`).send(channelnameupdate)
      // client.channels.get(`${logs}`).send(`${newMember.user.tag} joined a Voice Channel -=- ${newUserChannel.name}`)
      // User Joins a voice channel
-  } else if(newChannel.positon !== oldChannel.postion) {
-     let channelposupdate = new Discord.RichEmbed()
-     .addField('-=- Channel Event Log -=-', `"**${newChannel.name}**" was moved to position **${newChannel.postion}** from position ${oldChannel.positon}\nOld Parent: ${oldChannel.parent.name} |-| New Parent: ${newChannel.parent.name}\nID: ${newChannel.id}`)
-     client.channels.get(`${logs}`).send(channelposupdate)
+  }
      // client.channels.get(`${logs}`).send(`${newMember.user.tag} left a Voice Channel -=- ${oldUserChannel.name}`)
         // User leaves a voice channel
-  }
 //   let channelupdate = new Discord.RichEmbed()
 //   .addfield('__Channel Updated__', `Before: ${oldChan}\nAfter: ${newChan}\n\nOld Position: ${oldChannel.position}\nNew Position: ${newChannel.position}\n\nChannel ID: ${newChannel.id}`)
   
 //   client.channels.get(`${logs}`).send(channelupdate)
 //   `__**Channel Updated:**__\n• Old Name: ${oldChan}\n• New Name: ${newChan}\nPosition: ${newChannel.position}`
+});
+
+client.on('channelUpdate', (oldChannel, newChannel) => {
+  if(newChannel.positon !== oldChannel.postion) {
+     let channelposupdate = new Discord.RichEmbed()
+     .addField('-=- Channel Event Log -=-', `"**${newChannel.name}**" was moved to position **${newChannel.postion}** from position ${oldChannel.positon}\nOld Parent: ${oldChannel.parent.name} |-| New Parent: ${newChannel.parent.name}\nID: ${newChannel.id}`)
+     client.channels.get(`${logs}`).send(channelposupdate)
+  }
 });
 
 // Role Events -
