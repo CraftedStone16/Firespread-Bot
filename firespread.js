@@ -76,7 +76,6 @@ client.on('error', e => {
 var mention = '<@373913434158530571>'
 client.on('message', async message => {
     if (!message.content.startsWith(prefix)) return;
-    if (!message.author.id == "398947686415466497") return message.channel.send('I\'m Sorry, but I am in Maintenance Mode so my commands have been disabled!')
     let args = message.content.split(' ').slice(1);
     var result = args.join(' ')
     let botsonly = message.guild.roles.find('name', '0')
@@ -90,6 +89,9 @@ client.on('message', async message => {
     let fsbRole = message.guild.roles.find('name', 'FS Ban');
     let memberRole = message.guild.roles.find('name', 'Members')
     let mutedRole = message.guild.roles.find('name', 'Muted')
+    
+    if(!message.member.roles.has(ownerRole.id)) return message.channel.send('I\'m Sorry, but I am in Maintenance Mode so my commands have been disabled!');
+
 
     if (message.content.startsWith(prefix +'help help')) {
       message.channel.send(`\`\`\`Displays the commands list\n\nUsage: ${prefix}help     Alias; ${prefix}h\`\`\``)
@@ -1291,7 +1293,8 @@ if (message.content.startsWith(prefix + 'mute')) {
 */
 
 client.on('message', async message => { //----- RE ENABLE AFTER MAINTENANCE -----
-  if (!message.author.id == "398947686415466497") return;
+  let botowner = message.guild.roles.find('name', 'Bot Owner - DO NOT TOUCH!');
+  if(!message.member.roles.has(ownerRole.id)) return message.channel.send('I\'m Sorry, but I am in Maintenance Mode so my commands have been disabled!');
   let args = message.content.split(' ');
   let searchString = args.slice(1).join(' ');
   let url = args[1] ? args[1].replace(/<(.+)>/g, '$1') : '';
