@@ -89,8 +89,9 @@ client.on('message', async message => {
     let memberRole = message.guild.roles.find('name', 'Members')
     let mutedRole = message.guild.roles.find('name', 'Muted')
     
-    if(!message.member.roles.has(botowner.id)) return message.channel.send('I\'m Sorry, but I am in Maintenance Mode so my commands have been disabled!');
     if (!message.content.startsWith(prefix)) return;
+    if(!message.member.roles.has(botowner.id)) return message.channel.send('I\'m Sorry, but I am in Maintenance Mode so my commands have been disabled!');
+    // if (!message.content.startsWith(prefix)) return;
 
     if (message.content.startsWith(prefix +'help help')) {
       message.channel.send(`\`\`\`Displays the commands list\n\nUsage: ${prefix}help     Alias; ${prefix}h\`\`\``)
@@ -1293,7 +1294,7 @@ if (message.content.startsWith(prefix + 'mute')) {
 
 client.on('message', async message => { //----- RE ENABLE AFTER MAINTENANCE -----
   let botowner = message.guild.roles.find('name', 'Bot Owner - DO NOT TOUCH!');
-  if(!message.member.roles.has(botowner.id)) return message.channel.send('I\'m Sorry, but I am in Maintenance Mode so my commands have been disabled!');
+  if(!message.member.roles.has(botowner.id)) return; // message.channel.send('I\'m Sorry, but I am in Maintenance Mode so my commands have been disabled!');
   if (!message.content.startsWith(prefix)) return;
   let args = message.content.split(' ');
   let searchString = args.slice(1).join(' ');
