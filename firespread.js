@@ -1576,6 +1576,13 @@ client.on('message', message => {
   }
 });
 
+client.on('message', message => {
+  if (message.content.startsWith(prefix + 'giveme Bot-Updates')) {
+    message.author.addRole('427189291618402304')
+    message.channel.send('Ok! I have given you the Bot-Updates Role')
+  }
+});
+
 client.on('guildBanAdd', (guild, user) => {
   // let guild = member.guild;
   guild.channels.get(`${greetings}`).send(`**${user.tag}** Was just banned from the **Firespread Network Discord!**`);
