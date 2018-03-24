@@ -1583,7 +1583,7 @@ client.on('message', message => {
   } else
   
   if (message.content.startsWith(prefix + 'leave Bot-Updates')) {
-    message.member.addRole('427189291618402304')
+    message.member.removeRole('427189291618402304')
     message.channel.send('Ok! I have removed the "Bot-Updates" role from you!')
   }
 });
