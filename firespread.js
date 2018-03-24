@@ -1578,7 +1578,7 @@ client.on('message', message => {
 
 client.on('message', message => {
   if (message.content.startsWith(prefix + 'giveme Bot-Updates')) {
-    message.author.addRole('427189291618402304')
+    message.member.addRole('427189291618402304')
     message.channel.send('Ok! I have given you the Bot-Updates Role')
   }
 });
