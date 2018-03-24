@@ -1552,11 +1552,11 @@ client.on('message', message => {
 
 client.on('message', message => {
   if (message.content === 'hey') {
-    message.channel.send(`Hello ${message.author}!`)
+    message.channel.send(`Hey ${message.author}!`)
   } else 
   
   if (message.content === 'Hey') {
-    message.channel.send(`Hello ${message.author}!`)
+    message.channel.send(`Hey ${message.author}!`)
   } else 
 
   if (message.content === 'hi') {
@@ -1565,6 +1565,14 @@ client.on('message', message => {
 
   if (message.content === 'Hi') {
     message.channel.send(`Hi ${message.author}!`)
+  } else 
+
+  if (message.content === 'hello') {
+    message.channel.send(`Hello ${message.author}!`)
+  } else 
+
+  if (message.content === 'Hello') {
+    message.channel.send(`Hello ${message.author}!`)
   }
 });
 
