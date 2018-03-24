@@ -1534,6 +1534,8 @@ client.on('messageDelete', message => {
 // client.on('messageDeleteBulk', message => {
 //   client.channels.get('393881895919681536').send(`${message.size} messages was just deleted!`)
 // });
+
+// Prefix help
 client.on('message', message => {
   if (message.content === '<@422612037198413836>') {
     message.channel.send(`My prefix is **${prefix}**`);
@@ -1541,8 +1543,30 @@ client.on('message', message => {
   
   if (message.content === 'what is your prefix <@422612037198413836>?') {
     message.channel.send(`My prefix is **${prefix}**`);
+  } else 
+  
+  if (message.content === 'What is your prefix <@422612037198413836>?') {
+    message.channel.send(`My prefix is **${prefix}**`);
   }
 });
+
+client.on('message', message => {
+  if (message.content === 'hey') {
+    message.channel.send(`Hello ${message.author}!`)
+  } else 
+  
+  if (message.content === 'Hey') {
+    message.channel.send(`Hello ${message.author}`)
+  } else 
+
+  if (message.content === 'hi') {
+    message.channel.send(`Hi ${message.author}!`)
+  } else 
+
+  if (message.content === 'Hi') {
+    message.channel.send(`Hi ${message.author}!`)
+  }
+)};
 
 client.on('guildBanAdd', (guild, user) => {
   // let guild = member.guild;
