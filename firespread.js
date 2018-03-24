@@ -1535,7 +1535,11 @@ client.on('messageDelete', message => {
 //   client.channels.get('393881895919681536').send(`${message.size} messages was just deleted!`)
 // });
 client.on('message', message => {
-  if (message.content === '<@406870027514413076>') {
+  if (message.content === '<@422612037198413836>') {
+    message.channel.send(`My prefix is **${prefix}**`);
+  } else
+  
+  if (message.content === 'what is your prefix <@422612037198413836>?') {
     message.channel.send(`My prefix is **${prefix}**`);
   }
 });
@@ -1585,7 +1589,7 @@ client.on('guildMemberRemove', member => {
 // ${member.user.presence.game === null ? "Nothing! (Literally)" :  member.user.presence.game.name}
 // Emoji Events
 client.on('emojiCreate', emoji => {
-  const caniemoji = emoji.animated ? "This is an Animated Emoji" : "This is not an Animated Emoji";
+  const caniemoji = emoji.animated ? "<:nitro:422127897122439168> This is an Animated Emoji" : "This is not an Animated Emoji";
   let emojicreate = new Discord.RichEmbed()
   .addField(`-=- Emoji Event Log -=-`, `"**${emoji.name}**" was created\nID: ${emoji.id}`)
   .setFooter(`${caniemoji}`)
@@ -1594,7 +1598,7 @@ client.on('emojiCreate', emoji => {
 });
 
 client.on('emojiDelete', emoji => {
-  const daniemoji = emoji.animated ? "This was an Animated Emoji" : "This was not an Animated Emoji";
+  const daniemoji = emoji.animated ? "<:nitro:422127897122439168> This was an Animated Emoji" : "This was not an Animated Emoji";
   let emojidelete = new Discord.RichEmbed()
   .addField(`-=- Emoji Event Log -=-`, `"**${emoji.name}**" was deleted\nID: ${emoji.id}`)
   .setFooter(`${daniemoji}`)
@@ -1603,7 +1607,7 @@ client.on('emojiDelete', emoji => {
 });
 
 client.on('emojiUpdate', (oldEmoji, newEmoji) => {
-  const uaniemoji = newEmoji.animated ? "This is an Animated Emoji" : "This is not an Animated Emoji";
+  const uaniemoji = newEmoji.animated ? "<:nitro:422127897122439168> This is an Animated Emoji" : "This is not an Animated Emoji";
   let emojiupdate = new Discord.RichEmbed()
   .addField(`-=- Emoji Event Log -=-`, `"**${oldEmoji.name}**" was renamed to "**${newEmoji.name}**"\nID: ${newEmoji.id}`)
   .setFooter(`${uaniemoji}`)
