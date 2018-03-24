@@ -1579,7 +1579,12 @@ client.on('message', message => {
 client.on('message', message => {
   if (message.content.startsWith(prefix + 'giveme Bot-Updates')) {
     message.member.addRole('427189291618402304')
-    message.channel.send('Ok! I have given you the Bot-Updates Role')
+    message.channel.send('Ok! I have given you the "Bot-Updates" role!')
+  } else
+  
+  if (message.content.startsWith(prefix + 'leave Bot-Updates')) {
+    message.member.addRole('427189291618402304')
+    message.channel.send('Ok! I have removed the "Bot-Updates" role from you!')
   }
 });
 
