@@ -1556,7 +1556,7 @@ client.on('message', message => {
   } else 
   
   if (message.content === 'Hey') {
-    message.channel.send(`Hello ${message.author}`)
+    message.channel.send(`Hello ${message.author}!`)
   } else 
 
   if (message.content === 'hi') {
@@ -1566,7 +1566,7 @@ client.on('message', message => {
   if (message.content === 'Hi') {
     message.channel.send(`Hi ${message.author}!`)
   }
-)};
+});
 
 client.on('guildBanAdd', (guild, user) => {
   // let guild = member.guild;
