@@ -858,15 +858,6 @@ client.on('message', async message => {
       client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`suggest\` command in <#${message.channel.id}>!`)
     } else
 
-    if (message.content.startsWith(prefix + 'bug')) {
-      let bug = args.join(' ')
-      if (bug.length < 1) return message.channel.send('You must provide a message');
-      client.channels.get('415280541760356369').send(`<@&415260857786695711>, **New Bug:**\n\n${bug}`)
-      message.author.send(`You just submitted a bug!\n\n\`${bug}\`\nWe appreciate all bugs that we get!`)
-      message.channel.send(':ok_hand: I have reported your bug.')
-      client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`bug\` command in <#${message.channel.id}>!`)
-    } else
-
     if (message.content.startsWith(prefix + 'say')) {
       let say = args.join(' ')
       if (message.author.bot) return;
@@ -1609,6 +1600,16 @@ client.on('message', message => {
   if (message.content.startsWith(prefix + 'leave News')) {
     message.member.removeRole('428245044345044992')
     message.channel.send('Ok! I have removed the "News/Announcements" role from you!')
+  } else
+  
+  if (message.content.startsWith(prefix + 'bug')) {
+    let args = message.content.split(' ').slice(1);
+    let bug = args.join(' ')
+    if (bug.length < 1) return message.channel.send('You must provide a message');
+    client.channels.get('415280541760356369').send(`<@&415260857786695711>, **New Bug:**\n\n${bug}`)
+    message.author.send(`You just submitted a bug!\n\n\`${bug}\`\nWe appreciate all bugs that we get!`)
+    message.channel.send(':ok_hand: I have reported your bug.')
+    client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`bug\` command in <#${message.channel.id}>!`)
   }
 });
 
