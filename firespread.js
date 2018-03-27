@@ -1578,7 +1578,7 @@ client.on('message', message => {
 
 client.on('message', message => {
   if (message.content.startsWith(prefix + 'roles')) {
-    client.channels.get(`${bc}`).send(`${message.author}\n__**Available Roles/Names:**__\n• Bot-Updates\n• News/Announcements\n• News\n\nUsage: \`${prefix}giveme <Name (listed above)>\` (To get the role) \`${prefix}leave <Name (listed above)> (To remove the role\nPLEASE NOTE: You have to type it exactly like it is in the list for it to work!`)
+    client.channels.get(`${bc}`).send(`${message.author}\n__**Available Roles/Names:**__\n• Bot-Updates\n• News/Announcements\n• News\n\nUsage: \`${prefix}giveme <Name (listed above)>\` (To get the role) \`${prefix}leave <Name (listed above)>\` (To remove the role\nPLEASE NOTE: You have to type it exactly like it is in the list for it to work!`)
   } else
     
   if (message.content.startsWith(prefix + 'giveme Bot-Updates')) {
