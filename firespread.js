@@ -90,7 +90,7 @@ client.on('message', async message => {
     let mutedRole = message.guild.roles.find('name', 'Muted')
     
     if (!message.content.startsWith(prefix)) return;
-    if(!message.member.roles.has(botowner.id)) return message.channel.send('I\'m Sorry, but I am in Maintenance Mode so my commands have been disabled!');
+    if(!message.member.roles.has(botowner.id)) return; // message.channel.send('I\'m Sorry, but I am in Maintenance Mode so my commands have been disabled!');
     // if (!message.content.startsWith(prefix)) return;
 
     if (message.content.startsWith(prefix +'help help')) {
@@ -1577,6 +1577,10 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
+  if (message.content.startsWith(prefix + 'roles')) {
+    message.channel.get(`${bc}`).send(`${message.author}\n__**Available Roles/Names:**__\n• Bot-Updates\n• News/Announcements\n• News\n\nUsage: \`${prefix}giveme <Name (listed above)>\` (To get the role) \`${prefix}leave <Name (listed above)> (To remove the role\nPLEASE NOTE: You have to type it exactly like it is in the list for it to work!`)
+  } else
+    
   if (message.content.startsWith(prefix + 'giveme Bot-Updates')) {
     message.member.addRole('427189291618402304')
     message.channel.send('Ok! I have given you the "Bot-Updates" role!')
@@ -1585,6 +1589,26 @@ client.on('message', message => {
   if (message.content.startsWith(prefix + 'leave Bot-Updates')) {
     message.member.removeRole('427189291618402304')
     message.channel.send('Ok! I have removed the "Bot-Updates" role from you!')
+  } else
+
+  if (message.content.startsWith(prefix + 'giveme News/Announcements')) {
+    message.member.addRole('428245044345044992')
+    message.channel.send('Ok! I have given you the "News/Announcements" role!')
+  } else
+  
+  if (message.content.startsWith(prefix + 'leave News/Announcements')) {
+    message.member.removeRole('428245044345044992')
+    message.channel.send('Ok! I have removed the "News/Announcements" role from you!')
+  } else
+    
+  if (message.content.startsWith(prefix + 'giveme News')) {
+    message.member.addRole('428245044345044992')
+    message.channel.send('Ok! I have given you the "News/Announcements" role!')
+  } else
+  
+  if (message.content.startsWith(prefix + 'leave News')) {
+    message.member.removeRole('428245044345044992')
+    message.channel.send('Ok! I have removed the "News/Announcements" role from you!')
   }
 });
 
